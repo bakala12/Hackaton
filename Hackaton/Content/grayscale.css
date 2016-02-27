@@ -288,7 +288,7 @@ a:focus {
     }
 
     #map {
-        height: 400px;
+        height: 100vh;
         margin-top: 50px;
     }
 }
