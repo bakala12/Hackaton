@@ -125,60 +125,39 @@
                     <h2>Twój profil</h2>
                     <img class="avatar" src="~/Images/user.png" alt="avatar"/> <!-- dodac ladowanie zdjęcia -->
                     <p>Edytuj swój profil: zmień maila i dodaj najnowsze zdjęcie profilowe! </p>
-                    <table style="margin:0 auto;width:50%">
-                        <tr>
-                            <td>
-                                <label for="imie"> Imie</label>
-                            </td>
-                            <td>
-                                <input type="text" id="imie"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="nazwisko"> Nazwisko</label>
-                            </td>
-                            <td>
-                                <input type="text" id="nazwisko" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="wiek"> Wiek</label>
-                            </td>
-                            <td>
-                                <input type="number" id="wiek" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="stare_haslo"> Stare hasło</label>
-                            </td>
-                            <td>
-                                <input type="password" id="stare_haslo" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="nowe_haslo1"> Nowe hasło</label>
-                            </td>
-                            <td>
-                                <input type="password" id="nowe_haslo1" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="nowe_haslo2"> Potwierdź nowe hasło</label>
-                            </td>
-                            <td>
-                                <input type="password" id="nowe_haslo2" />
-                            </td>
-                        </tr>
-                    </table>
-                    <br />
-                    <button id="potwierdz_zmiany_profilu_button" type="button">
-                        <text> Potwierdź zmiany</text>
-                    </button>
+                    <form>
+                        <fieldset class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control" id="email" placeholder="Email">
+                            <small class="text-muted">Email można zmienić</small>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <label for="imie">Password</label>
+                            <input type="text" class="form-control" id="imie" placeholder="Imie">
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <label for="nazwisko">Password</label>
+                            <input type="text" class="form-control" id="nazwisko" placeholder="Nazwisko">
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <label for="wiek">Password</label>
+                            <input type="number" class="form-control" id="wiek" placeholder="Wiek">
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <label for="stare_haslo">Stare hasło</label>
+                            <input type="password" class="form-control" id="stare_haslo" placeholder="Password">
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <label for="nowe_haslo1">Nowe hasło</label>
+                            <input type="password" class="form-control" id="nowe_haslo1" placeholder="Password">
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <label for="nowe_haslo2">Potwierdź nowe hasło</label>
+                            <input type="password" class="form-control" id="nowe_haslo1" placeholder="Password">
+                        </fieldset>
+                        <button style="color:azure" type="submit" id="potwierdz_zmiany_profilu_button" class="btn btn-primary">Potwierdź zmiany</button>
+                    </form>
+                       
                 </div>
             </div>
         </div>

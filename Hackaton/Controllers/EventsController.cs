@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using Hackaton.DataAccess;
 using Hackaton.DataAccess.Entities;
+using Microsoft.AspNet.Identity;
 using Services;
 // ReSharper disable InconsistentNaming
 
@@ -23,6 +24,11 @@ namespace Hackaton.Controllers
         public async Task<ActionResult> Index()
         {
             return View(await eventService.GetEventsDtoList());
+        }
+
+        public async Task<ActionResult> ForUser()
+        {
+            return View(await eventService.GetEventsDtoListForUser(User.Identity.GetUserId()));
         }
 
         //// GET: Events/Details/5

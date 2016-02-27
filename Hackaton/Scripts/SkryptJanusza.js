@@ -12,4 +12,5 @@ function wczytaj_dane_profilowe()
     var wiek = document.getElementById("wiek");
 
     // teraz wczytam to do moich pól
+
 }
