@@ -170,7 +170,7 @@ namespace Hackaton.Controllers
             return View(model);
         }
 
-        public async Task<ActionResult> Update(RegisterViewModel model)
+        public async Task<ActionResult> Update(RegisterViewModel model) // nie dziala 
         {
             if (ModelState.IsValid)
             {
