@@ -10,7 +10,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Hackaton.Models;
-
+// testowy commit 
 namespace Hackaton.Controllers
 {
     [Authorize]
