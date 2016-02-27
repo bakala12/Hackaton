@@ -4,19 +4,10 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Shared;
 
 namespace Hackaton.DataAccess.Entities
 {
-    public enum EventType
-    {
-        [Description("trucht")]
-        Jog,
-        Sprint,
-        [Description("bieg interwałowy")]
-        Interval,
-        LongRun
-    }
-
     public class Event : Entity
     {
         [Description("Miejsce gdzie odbędzię się wydarzenie")]
