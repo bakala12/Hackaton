@@ -24,5 +24,7 @@ namespace Hackaton.DataAccess
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Hackaton.DataAccess.Entities.User> IdentityUsers { get; set; }
     }
 }
