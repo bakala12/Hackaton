@@ -125,23 +125,56 @@
                     <h2>Twój profil</h2>
                     <img class="avatar" src="~/Images/user.png" alt="avatar"/> <!-- dodac ladowanie zdjęcia -->
                     <p>Edytuj swój profil: zmień maila i dodaj najnowsze zdjęcie profilowe! </p>
-                    <label for="imie"> Imie</label>
-                    <input type="text" id="imie"></input>
-                    <br />
-                    <label for="nazwisko"> Nazwisko</label>
-                    <input type="text" id="nazwisko"></input>
-                    <br />
-                    <label for="wiek"> Wiek</label>
-                    <input type="number" id="wiek"></input>
-                    <br />
-                    <label for="stare_haslo"> Stare hasło</label>
-                    <input type="password" id= "stare_haslo" />
-                    <br />
-                    <label for="nowe_haslo1"> Nowe hasło</label>
-                    <input type="password" id= "nowe_haslo1" />
-                    <br />
-                    <label for="nowe_haslo2"> Potwierdź nowe hasło</label>
-                    <input type="password" id= "nowe_haslo2" />
+                    <table style="margin:0 auto;width:50%">
+                        <tr>
+                            <td>
+                                <label for="imie"> Imie</label>
+                            </td>
+                            <td>
+                                <input type="text" id="imie"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="nazwisko"> Nazwisko</label>
+                            </td>
+                            <td>
+                                <input type="text" id="nazwisko" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="wiek"> Wiek</label>
+                            </td>
+                            <td>
+                                <input type="number" id="wiek" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="stare_haslo"> Stare hasło</label>
+                            </td>
+                            <td>
+                                <input type="password" id="stare_haslo" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="nowe_haslo1"> Nowe hasło</label>
+                            </td>
+                            <td>
+                                <input type="password" id="nowe_haslo1" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="nowe_haslo2"> Potwierdź nowe hasło</label>
+                            </td>
+                            <td>
+                                <input type="password" id="nowe_haslo2" />
+                            </td>
+                        </tr>
+                    </table>
                     <br />
                     <button id="potwierdz_zmiany_profilu_button" type="button">
                         <text> Potwierdź zmiany</text>
