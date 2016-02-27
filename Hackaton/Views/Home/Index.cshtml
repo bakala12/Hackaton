@@ -105,7 +105,8 @@
     <!-- Map Section -->
         <div id="googleMap" style="width: 100%;"></div>
     <!-- Profil Section -->
-
+    @if (User.Identity.IsAuthenticated)
+    {
         <section id="profil" class="content-section text-center">
             <div class="download-section">
                 <div class="container">
@@ -113,14 +114,19 @@
                     <div class="col-lg-8 col-lg-offset-2">
                         <h2>Twój profil</h2>
                         <img class="avatar" src="~/Images/user.png" alt="avatar" /> <!-- dodac ladowanie zdjęcia -->
-                        <br/>
-                        <a href="/Events/ForUser">Edytuj swój profil: zmień maila <br/>i dodaj najnowsze zdjęcie profilowe! </a>
-                     
+                        <p>Edytuj swój profil: zmień maila i dodaj najnowsze zdjęcie profilowe! </p>
+                        @User.Identity.Name
+
+                        @Html.ActionLink("Zmień hasło", "ChangePassword", "Manage", routeValues: null, htmlAttributes: new { id = "registerLink" })
+
+                        
+
+
                     </div>
                 </div>
             </div>
         </section>
-    
+
         <!-- Footer -->
         <footer>
             <div class="container text-center">

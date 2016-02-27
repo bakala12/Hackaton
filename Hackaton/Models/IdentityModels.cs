@@ -21,7 +21,7 @@ namespace Hackaton.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("HackatonDbCtx", throwIfV1Schema: false)
         {
         }
 
