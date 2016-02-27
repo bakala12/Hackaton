@@ -11,5 +11,30 @@
 
     map.mapTypes.set('map_style', styledMap);
     map.setMapTypeId('map_style');
+
+    displayTrees(map);
+
 }
 google.maps.event.addDomListener(window, 'load', initialize);
+
+function displayTrees(map) {
+    return $.ajax({
+        url: 'Map/GetTrees',
+        type: 'GET',
+        dataType: 'json',
+        cache: false,
+        success: function (results) {
+            for (var i = 0; i < results.length; i++) {
+                var marker = new google.maps.Marker({
+                   // position: { lat: 52.231236, lng: 21.007281 },
+                    position: { lat: results[i].CoordY, lng: results[i].CoordX },
+                    icon: '../Images/tree_green.png'
+                });
+                marker.setMap(map);
+            }
+        },
+        error: function () {
+            alert('Error occured');
+        }
+    });
+}
