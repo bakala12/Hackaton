@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Diagnostics;
 using System.Linq;
 using System.Net;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using AutoMapper;
 using Hackaton.DataAccess;
 using Hackaton.DataAccess.Entities;
 using Shared.Dtos;
@@ -44,7 +40,6 @@ namespace Services
             catch (Exception)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
             }
         }
 
