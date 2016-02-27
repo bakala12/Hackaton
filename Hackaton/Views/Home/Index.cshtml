@@ -1,8 +1,9 @@
-﻿@{
+﻿@using Microsoft.AspNet.Identity
+@{
     Layout = null;
 }
 
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -22,7 +23,9 @@
     <link href="~/Content/grayscale.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+   <!-- <link href="~/Content/font-awesome.css" stylesheet" rel="stylesheet" type="text/css"> -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+   <!-- <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> --> 
     <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 
@@ -65,6 +68,32 @@
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>
+                    @*<li>
+                            @Html.ActionLink("Zaloguj", "Login", "Account");
+                        </li>
+                        <li>
+                            @Html.ActionLink("Zarejestruj","Register" ,"Account");
+                        </li>*@
+                    <li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    @Html.ActionLink("Witaj " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                                </li>
+                                <li><a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a></li>
+                            </ul>
+                        }
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Zarejestruj", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                        <li>@Html.ActionLink("Zaloguj", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                    }
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -80,7 +109,7 @@
                     <div class="col-md-8 col-md-offset-2">
                         <h1 class="brand-heading">Grayscale</h1>
                         <p class="intro-text">A free, responsive, one page Bootstrap theme.<br>Created by Start Bootstrap.</p>
-                        <a href="#about" class="btn btn-circle page-scroll">
+                        <a href="#about" class="btn btn-circle page-scroll"> <!-- NIE DZIAŁA  animated LOL--> 
                             <i class="fa fa-angle-double-down animated"></i>
                         </a>
                     </div>
@@ -120,7 +149,8 @@
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Contact Start Bootstrap</h2>
                 <p>Feel free to email us to provide some feedback on our templates, give us suggestions for new templates and themes, or to just say hello!</p>
-                <p><a href="mailto:feedback@startbootstrap.com">feedback@startbootstrap.com</a>
+                <p>
+                    <a href="mailto:feedback@startbootstrap.com">feedback@startbootstrap.com</a>
                 </p>
                 <ul class="list-inline banner-social-buttons">
                     <li>
