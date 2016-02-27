@@ -277,7 +277,15 @@ a:focus {
     height: 200px;
     margin-top: 100px;
 }
+#wydarzenia{
+    height: 100vh;
+}
+#listaWydarzen{
 
+}
+.avatar{
+    margin: 0 auto;
+}
 @media(min-width:767px) {
     .content-section {
         padding-top: 50px;
