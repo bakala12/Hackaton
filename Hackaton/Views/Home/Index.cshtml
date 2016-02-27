@@ -118,6 +118,9 @@
                         <p>Edytuj swój profil: zmień maila i dodaj najnowsze zdjęcie profilowe! </p>
                         @User.Identity.Name
 
+                        @Html.ActionLink("Zmień hasło", "ChangePassword", "Manage", routeValues: null, htmlAttributes: new { id = "registerLink" })
+
+                        
 
 
                     </div>
