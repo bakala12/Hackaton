@@ -82,8 +82,6 @@ namespace Hackaton.Controllers
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
@@ -172,26 +170,26 @@ namespace Hackaton.Controllers
             return View(model);
         }
 
-        //
-        // GET: /Account/ConfirmEmail
-        [AllowAnonymous]
-        public async Task<ActionResult> ConfirmEmail(string userId, string code)
-        {
-            if (userId == null || code == null)
-            {
-                return View("Error");
-            }
-            var result = await UserManager.ConfirmEmailAsync(userId, code);
-            return View(result.Succeeded ? "ConfirmEmail" : "Error");
-        }
+        ////
+        //// GET: /Account/ConfirmEmail
+        //[AllowAnonymous]
+        //public async Task<ActionResult> ConfirmEmail(string userId, string code)
+        //{
+        //    if (userId == null || code == null)
+        //    {
+        //        return View("Error");
+        //    }
+        //    var result = await UserManager.ConfirmEmailAsync(userId, code);
+        //    return View(result.Succeeded ? "ConfirmEmail" : "Error");
+        //}
 
-        //
-        // GET: /Account/ForgotPassword
-        [AllowAnonymous]
-        public ActionResult ForgotPassword()
-        {
-            return View();
-        }
+        ////
+        //// GET: /Account/ForgotPassword
+        //[AllowAnonymous]
+        //public ActionResult ForgotPassword()
+        //{
+        //    return View();
+        //}
 
         ////
         //// POST: /Account/ForgotPassword
