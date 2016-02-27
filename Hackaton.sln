@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackaton", "Hackaton\Hackaton.csproj", "{9ABFBF11-27FA-4AF2-B53A-ACBE089C277B}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -13,13 +13,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackaton", "Hackaton\Hackat
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackaton.DataAccess", "Hackaton.DataAccess\Hackaton.DataAccess.csproj", "{22058A2D-29F8-4DBF-BE04-8CC55B5E63EB}"
-	ProjectSection(ProjectDependencies) = postProject
-		{1E2A5624-44EF-4C88-9726-E08E2A14BE4F} = {1E2A5624-44EF-4C88-9726-E08E2A14BE4F}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeLoader", "TreeLoader\TreeLoader.csproj", "{C8994FE9-81A4-44F1-BAC1-13D70951067E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{1E2A5624-44EF-4C88-9726-E08E2A14BE4F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{22058A2D-29F8-4DBF-BE04-8CC55B5E63EB} = {22058A2D-29F8-4DBF-BE04-8CC55B5E63EB}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{8F916C44-D6D8-4A66-876C-FE547089574C}"
 EndProject

@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -196,6 +200,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -283,8 +288,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\startbootstrap-grayscale-gh-pages\LICENSE" />
-    <Content Include="Views\startbootstrap-grayscale-gh-pages\README.md" />
+    <Content Include="Views\Events\Create.cshtml" />
+    <Content Include="Views\Events\Delete.cshtml" />
+    <Content Include="Views\Events\Details.cshtml" />
+    <Content Include="Views\Events\Edit.cshtml" />
+    <Content Include="Views\Events\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -311,6 +319,10 @@
     <ProjectReference Include="..\Shared\Shared.csproj">
       <Project>{8f916c44-d6d8-4a66-876c-fe547089574c}</Project>
       <Name>Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tests\Tests.csproj">
+      <Project>{8eb32988-1e35-4735-bf93-4caaba79123b}</Project>
+      <Name>Tests</Name>
     </ProjectReference>
     <ProjectReference Include="..\TreeLoader\TreeLoader.csproj">
       <Project>{c8994fe9-81a4-44f1-bac1-13d70951067e}</Project>
