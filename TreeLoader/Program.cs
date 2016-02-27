@@ -12,6 +12,8 @@ namespace TreeLoader
         {
             Loader loader = new Loader();
             loader.Load();
+            Console.Write("ZAKOŃCZONO LOADER");
+            Console.ReadLine();
         }
 
     }
