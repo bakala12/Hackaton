@@ -280,6 +280,9 @@ a:focus {
 #wydarzenia{
     height: 100vh;
 }
+#googleMap{
+    height:100vh;
+}
 #listaWydarzen{
 
 }
