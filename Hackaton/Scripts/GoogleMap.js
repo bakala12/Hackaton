@@ -12,21 +12,32 @@
     map.mapTypes.set('map_style', styledMap);
     map.setMapTypeId('map_style');
 
-    displayTrees(map);
+ //   displayTrees(map);
+    google.maps.event.addListener(map, 'bounds_changed', function () {
+        displayTrees(map, map.getBounds());
+    });
 
 }
+
 google.maps.event.addDomListener(window, 'load', initialize);
 
-function displayTrees(map) {
+
+function displayTrees(map, bounds) {
+    var southWest = bounds.getSouthWest();
+    var northEast = bounds.getNorthEast();
+
     return $.ajax({
         url: 'Map/GetTrees',
         type: 'GET',
         dataType: 'json',
         cache: false,
+        data: {
+            'southWestX': southWest.lng(), 'southWestY': southWest.lat(),
+            'northEastX': northEast.lng(), 'northEastY': northEast.lat()
+        },
         success: function (results) {
             for (var i = 0; i < results.length; i++) {
                 var marker = new google.maps.Marker({
-                   // position: { lat: 52.231236, lng: 21.007281 },
                     position: { lat: results[i].CoordY, lng: results[i].CoordX },
                     icon: '../Images/tree_green.png'
                 });

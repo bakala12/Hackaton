@@ -10,15 +10,20 @@ namespace Hackaton.Controllers
 {
     public class MapController : Controller
     {
-        public JsonResult GetTrees()
+        private const int treesCount = 20;
+
+        public JsonResult GetTrees(double southWestX, double southWestY, double northEastX, double northEastY)
         {
             using (ApplicationDbContext ctx = new ApplicationDbContext())
             {
-                /* List<Tree> trees = new List<Tree>();
-                 trees.Add(ctx.Trees.First());
-                 trees.Add(ctx.Trees.First(t => t.Id == 10));
-                 return Json(trees, JsonRequestBehavior.AllowGet);*/
-                return Json(ctx.Trees.ToList(), JsonRequestBehavior.AllowGet);
+                var trees = ctx.Trees.Where(t =>
+                    t.CoordX > southWestX && t.CoordX < northEastX &&
+                    t.CoordY < northEastY && t.CoordY > southWestY).ToList();
+                int c = trees.Count();
+                int step = c/treesCount;
+                if (step == 0) step = 1;
+                var ret = trees.Where((x, i) => i % step == 0);
+                return Json(ret, JsonRequestBehavior.AllowGet);
             }
         }
     }
