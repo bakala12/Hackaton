@@ -202,9 +202,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KontrolerJanusza.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MapController.cs" />
-    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -234,6 +234,10 @@
     <Content Include="Images\buty.jpg" />
     <Content Include="Images\chopin.jpg" />
     <Content Include="Images\palac.jpg" />
+    <Content Include="Images\tree_blue.png" />
+    <Content Include="Images\tree_green.png" />
+    <Content Include="Images\tree_red.png" />
+    <Content Include="Images\user.png" />
     <Content Include="Images\Warszawa.jpg" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
@@ -242,6 +246,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\Thumbs.db" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\GoogleMap.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -298,15 +303,11 @@
     <Content Include="Views\Events\Index.cshtml" />
     <Content Include="Views\Account\EditProfile.cshtml" />
     <Content Include="Views\Events\ForUser.cshtml" />
-    <Content Include="Views\Users\Create.cshtml" />
-    <Content Include="Views\Users\Delete.cshtml" />
-    <Content Include="Views\Users\Details.cshtml" />
-    <Content Include="Views\Users\Edit.cshtml" />
-    <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\font-awesome\" />
+    <Folder Include="Views\KontrolerJanusza\" />
     <Folder Include="Views\List\" />
   </ItemGroup>
   <ItemGroup>
