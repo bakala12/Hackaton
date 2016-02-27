@@ -8,9 +8,9 @@ function onstart()
     var starehaslo = document.getElementById("stare_haslo");
     var nowehaslo1 = document.getElementById("nowe_haslo1");
     var nowehaslo2 = document.getElementById("nowe_haslo2");
-    wczytaj_dane_profilowe();
+   // wczytaj_dane_profilowe();
     var przycisk = document.getElementById("potwierdz_zmiany_profilu_button");
-    przycisk.onclick(klikniecie());
+  //  przycisk.onclick(klikniecie());
 
 }
 
