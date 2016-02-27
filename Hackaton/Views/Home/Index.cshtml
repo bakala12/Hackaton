@@ -131,9 +131,59 @@
             <div class="container">
                 <div class="col-lg-8 col-lg-offset-2">
                     <h2>Twój profil</h2>
-                    <img class="avatar" src="~/Images/user.png" alt="avatar"/>
-                    <p>You can download Grayscale for free on the preview page at Start Bootstrap.</p>
-                    <a href="http://startbootstrap.com/template-overviews/grayscale/" class="btn btn-default btn-lg">Visit Download Page</a>
+                    <img class="avatar" src="~/Images/user.png" alt="avatar"/> <!-- dodac ladowanie zdjęcia -->
+                    <p>Edytuj swój profil: zmień maila i dodaj najnowsze zdjęcie profilowe! </p>
+                    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="col-md-12 col-xs-12">
+                            <h4>Stwórz nowe konto</h4>
+                        </div>
+                        <hr />
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Login, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-6 col-xs-12">
+                                @Html.TextBoxFor(m => m.Login, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-6 col-xs-12">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-6 col-xs-12">
+                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-6 col-xs-12">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-6 col-xs-12">
+                                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-6 col-xs-12">
+                                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-6 col-xs-12">
+                                <input type="submit" class="btn btn-default" value="Rejestruj" />
+                            </div>
+                        </div>
+                    }
+                    <a href="http://startbootstrap.com/template-overviews/grayscale/" class="btn btn-default btn-lg"></a>
                 </div>
             </div>
         </div>
