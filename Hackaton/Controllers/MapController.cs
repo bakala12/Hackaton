@@ -10,7 +10,7 @@ namespace Hackaton.Controllers
 {
     public class MapController : Controller
     {
-        private const int treesCount = 20;
+        private const int treesCount = 50;
 
         public JsonResult GetTrees(double southWestX, double southWestY, double northEastX, double northEastY)
         {
