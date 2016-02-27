@@ -5,11 +5,12 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Hackaton.DataAccess;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Hackaton.Models;
-
+// testowy commit 
 namespace Hackaton.Controllers
 {
     [Authorize]
