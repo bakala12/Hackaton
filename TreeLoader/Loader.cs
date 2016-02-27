@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Hackaton.DataAccess;
 using Newtonsoft.Json;
 using TreeLoader.Objects;
 
@@ -36,7 +37,10 @@ namespace TreeLoader
 
         private void InsertTree(Tree tree)
         {
-
-        }
+            using (ApplicationDbContext ctx = new ApplicationDbContext())
+            {
+                if (!ctx.Trees.Any())
+            }        
+}
     }
 }
