@@ -16,15 +16,20 @@ namespace Hackaton.Controllers
         {
             using (ApplicationDbContext ctx = new ApplicationDbContext())
             {
-                var trees = ctx.Trees.Where(t =>
+                int c = ctx.Trees.Count(t =>
                     t.CoordX > southWestX && t.CoordX < northEastX &&
-                    t.CoordY < northEastY && t.CoordY > southWestY).ToList();
-                int c = trees.Count();
-                int step = c/treesCount;
+                    t.CoordY < northEastY && t.CoordY > southWestY);
+                
+                int step = c / treesCount;
                 if (step == 0) step = 1;
-                var ret = trees.Where((x, i) => i % step == 0);
-                return Json(ret, JsonRequestBehavior.AllowGet);
+
+                var trees = ctx.Trees.Where(t => t.Id % step == 0 &&
+                    t.CoordX > southWestX && t.CoordX < northEastX &&
+                    t.CoordY < northEastY && t.CoordY > southWestY);
+
+                return Json(trees.ToList(), JsonRequestBehavior.AllowGet);
             }
         }
+
     }
 }
