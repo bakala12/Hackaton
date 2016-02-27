@@ -136,7 +136,7 @@ a:focus {
     .navbar-custom.top-nav-collapse {
         padding: 0;
         border-bottom: 1px solid rgba(255,255,255,.3);
-        background: #000;
+        background: #00B200;
     }
 }
 
@@ -264,9 +264,8 @@ a:focus {
 .download-section {
     width: 100%;
     padding: 50px 0;
-    color: #fff;
-    background: url(../img/downloads-bg.jpg) no-repeat center center scroll;
-    background-color: #000;
+    color: #00B200;
+    background-color: whitesmoke;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -281,7 +280,7 @@ a:focus {
 
 @media(min-width:767px) {
     .content-section {
-        padding-top: 250px;
+        padding-top: 50px;
     }
 
     .download-section {
@@ -290,7 +289,7 @@ a:focus {
 
     #map {
         height: 400px;
-        margin-top: 250px;
+        margin-top: 50px;
     }
 }
 
