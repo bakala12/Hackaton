@@ -113,9 +113,12 @@
                     <div class="col-lg-8 col-lg-offset-2">
                         <h2>Twój profil</h2>
                         <img class="avatar" src="~/Images/user.png" alt="avatar" /> <!-- dodac ladowanie zdjęcia -->
-                        <p>Edytuj swój profil: zmień maila i dodaj najnowsze zdjęcie profilowe! </p>
-                        @User.Identity.Name
-
+                        <br/>
+                        <p>@User.Identity.Name</p> 
+                        <br/>
+                        <a style="color:#00B200;" class="h3" href="/Events/ForUser">Lista Twoich eventów</a>
+                        <br />
+                        <br />
                         @Html.ActionLink("Zmień hasło", "ChangePassword", "Manage", routeValues: null, htmlAttributes: new { id = "registerLink" })
                         @Html.ActionLink("Zmień hasło", "ChangePassword", "Manage", routeValues: null, htmlAttributes: new { id = "registerLink" })
                         
