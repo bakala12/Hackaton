@@ -34,13 +34,13 @@ namespace TreeLoader
             {
                 foreach (var tree in trees)
                 {
-                    InsertTree(tree, ctx, i++);
+                    InsertTree(tree, ctx, ref i);
                 }
                 ctx.SaveChanges();
             }
         }
 
-        private void InsertTree(Tree tree, ApplicationDbContext ctx, int i)
+        private void InsertTree(Tree tree, ApplicationDbContext ctx, ref int i)
         {
             if (!ctx.Trees.Any(t => t.InventoryNumber == tree.numer_inw))
             {
@@ -54,6 +54,7 @@ namespace TreeLoader
                     Type = tree.gatunek
                 });
                 Console.WriteLine("{0} || Dodano drzewo: {1} X: {2} Y:{3} ", i, tree.numer_inw, tree.x_wgs84, tree.y_wgs84);
+                i++;
             }
         }
     }
