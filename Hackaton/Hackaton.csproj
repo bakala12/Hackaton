@@ -215,6 +215,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\biegacz.png" />
     <Content Include="Images\buty.jpg" />
     <Content Include="Images\chopin.jpg" />
     <Content Include="Images\Warszawa.jpg" />
