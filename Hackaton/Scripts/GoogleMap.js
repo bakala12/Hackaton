@@ -12,8 +12,7 @@
     map.mapTypes.set('map_style', styledMap);
     map.setMapTypeId('map_style');
 
-    google.maps.event.addListener(map, 'bounds_changed', function () {
-        hideMarkers();
+    google.maps.event.addListener(map, 'idle', function () {
         displayTrees(map, map.getBounds());
     });
 
@@ -22,21 +21,24 @@
 google.maps.event.addDomListener(window, 'load', initialize);
 
 var markers = [];
-
+var id = 0;
 function displayTrees(map, bounds) {
     var southWest = bounds.getSouthWest();
     var northEast = bounds.getNorthEast();
 
-    return $.ajax({
+    $.ajax({
         url: 'Map/GetTrees',
         type: 'GET',
         dataType: 'json',
         cache: false,
         data: {
-            'southWestX': southWest.lng(), 'southWestY': southWest.lat(),
-            'northEastX': northEast.lng(), 'northEastY': northEast.lat()
+            'southWestX': southWest.lng(),
+            'southWestY': southWest.lat(),
+            'northEastX': northEast.lng(),
+            'northEastY': northEast.lat()
         },
         success: function (results) {
+            hideMarkers();
             for (var i = 0; i < results.length; i++) {
                 var marker = new google.maps.Marker({
                     position: { lat: results[i].CoordY, lng: results[i].CoordX },
@@ -45,11 +47,13 @@ function displayTrees(map, bounds) {
                 markers.push(marker);
                 marker.setMap(map);
             }
+
         },
         error: function () {
             alert('Error occured');
         }
     });
+
 }
 
 function hideMarkers() {
