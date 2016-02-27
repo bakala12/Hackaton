@@ -1,8 +1,9 @@
-﻿@{
+﻿@using Microsoft.AspNet.Identity
+@{
     Layout = null;
 }
 
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -67,6 +68,32 @@
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>
+                    @*<li>
+                            @Html.ActionLink("Zaloguj", "Login", "Account");
+                        </li>
+                        <li>
+                            @Html.ActionLink("Zarejestruj","Register" ,"Account");
+                        </li>*@
+                    <li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    @Html.ActionLink("Witaj " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                                </li>
+                                <li><a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a></li>
+                            </ul>
+                        }
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Zarejestruj", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                        <li>@Html.ActionLink("Zaloguj", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                    }
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -122,7 +149,8 @@
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Contact Start Bootstrap</h2>
                 <p>Feel free to email us to provide some feedback on our templates, give us suggestions for new templates and themes, or to just say hello!</p>
-                <p><a href="mailto:feedback@startbootstrap.com">feedback@startbootstrap.com</a>
+                <p>
+                    <a href="mailto:feedback@startbootstrap.com">feedback@startbootstrap.com</a>
                 </p>
                 <ul class="list-inline banner-social-buttons">
                     <li>
