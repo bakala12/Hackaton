@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackaton", "Hackaton\Hackaton.csproj", "{9ABFBF11-27FA-4AF2-B53A-ACBE089C277B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeLoader", "TreeLoader\TreeLoader.csproj", "{C8994FE9-81A4-44F1-BAC1-13D70951067E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{9ABFBF11-27FA-4AF2-B53A-ACBE089C277B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9ABFBF11-27FA-4AF2-B53A-ACBE089C277B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9ABFBF11-27FA-4AF2-B53A-ACBE089C277B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8994FE9-81A4-44F1-BAC1-13D70951067E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8994FE9-81A4-44F1-BAC1-13D70951067E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8994FE9-81A4-44F1-BAC1-13D70951067E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8994FE9-81A4-44F1-BAC1-13D70951067E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
