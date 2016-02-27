@@ -9,6 +9,7 @@ namespace Hackaton.DataAccess.Entities
 {
     public class Tree : Entity
     {
+        public string InventoryNumber { get; set; }
         public double CoordX { get; set; }
         public double CoordY { get; set; }
         public string Address { get; set; }
