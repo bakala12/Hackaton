@@ -52,7 +52,7 @@ namespace Hackaton.Models
         [Display(Name = "Nazwa użytkownika")]
         public string Login { get; set; }
 
-        [Required]
+        //[Required]
         [Display(Name = "Nazwa użytkownika")]
         [EmailAddress]
         public string Email { get; set; }
