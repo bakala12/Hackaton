@@ -11,6 +11,8 @@ using Hackaton.DataAccess;
 using Hackaton.DataAccess.Entities;
 using Microsoft.AspNet.Identity;
 using Services;
+using Shared.Dtos;
+
 // ReSharper disable InconsistentNaming
 
 namespace Hackaton.Controllers
@@ -25,10 +27,17 @@ namespace Hackaton.Controllers
         {
             return View(await eventService.GetEventsDtoList());
         }
-
+        [HttpPost]
         public async Task<ActionResult> ForUser()
         {
             return View(await eventService.GetEventsDtoListForUser(User.Identity.GetUserId()));
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Create(EventDto eventDto)
+        {
+            await eventService.AddEvent(eventDto);
+            return RedirectToAction("Index");
         }
     }
 }
