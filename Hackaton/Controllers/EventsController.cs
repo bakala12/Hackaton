@@ -18,7 +18,7 @@ namespace Hackaton.Controllers
     public class EventsController : Controller
     {
         private readonly EventService eventService = new EventService();
-
+        
 
         // GET: Events
         public async Task<ActionResult> Index()
