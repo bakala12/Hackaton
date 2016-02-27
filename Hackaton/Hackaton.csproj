@@ -237,6 +237,8 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\SkryptJanusza.js" />
+    <Content Include="Scripts\sryptyAni.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -280,6 +282,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\font-awesome\" />
+    <Folder Include="Views\List\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -291,16 +295,24 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hackaton.DataAccess\Hackaton.DataAccess.csproj">
-      <Project>{22058A2D-29F8-4DBF-BE04-8CC55B5E63EB}</Project>
+      <Project>{22058a2d-29f8-4dbf-be04-8cc55b5e63eb}</Project>
       <Name>Hackaton.DataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\Services\Services.csproj">
-      <Project>{1E2A5624-44EF-4C88-9726-E08E2A14BE4F}</Project>
+      <Project>{1e2a5624-44ef-4c88-9726-e08e2a14be4f}</Project>
       <Name>Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\Shared\Shared.csproj">
-      <Project>{8F916C44-D6D8-4A66-876C-FE547089574C}</Project>
+      <Project>{8f916c44-d6d8-4a66-876c-fe547089574c}</Project>
       <Name>Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tests\Tests.csproj">
+      <Project>{8eb32988-1e35-4735-bf93-4caaba79123b}</Project>
+      <Name>Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TreeLoader\TreeLoader.csproj">
+      <Project>{c8994fe9-81a4-44f1-bac1-13d70951067e}</Project>
+      <Name>TreeLoader</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
