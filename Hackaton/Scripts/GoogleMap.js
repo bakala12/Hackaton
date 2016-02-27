@@ -21,7 +21,8 @@
 google.maps.event.addDomListener(window, 'load', initialize);
 
 var markers = [];
-var id = 0;
+var selectedMarker;
+
 function displayTrees(map, bounds) {
     var southWest = bounds.getSouthWest();
     var northEast = bounds.getNorthEast();
@@ -46,6 +47,14 @@ function displayTrees(map, bounds) {
                 });
                 markers.push(marker);
                 marker.setMap(map);
+
+                google.maps.event.addListener(marker, 'click', function () {
+                    if (selectedMarker) {
+                        selectedMarker.setIcon('../Images/tree_green.png');
+                    }
+                    this.setIcon('../Images/tree_blue.png');
+                    selectedMarker = this;
+                });
             }
 
         },
