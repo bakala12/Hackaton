@@ -11,6 +11,7 @@ namespace Hackaton.Controllers
         // GET: KontrolerJanusza
         public ActionResult Index()
         {
+            // TO MOJ KONTROLER LELELEL
             return View();
         }
     }
