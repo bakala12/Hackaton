@@ -1,4 +1,6 @@
 ﻿@using Microsoft.AspNet.Identity
+
+
 @{
     Layout = null;
 }
@@ -103,69 +105,31 @@
     </header>
     <!-- Map Section -->
         <div id="googleMap" style="width: 100%;"></div>
+    <!-- Profil Section -->
+    @if (User.Identity.IsAuthenticated)
+    {
+        <section id="profil" class="content-section text-center">
+            <div class="download-section">
+                <div class="container">
 
-    <!-- Wydarzenia Section -->
-    <section id="wydarzenia" class="content-section text-center">
-        <div class="download-section">
-            <div class="container">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <h2>Twoje spotkania przy drzewie</h2>
-                    <p>Poniżej znajdują się wszystkie spotkania na bieganie przy drzewach :) :</p>
-                    <div id="listaWydarzen">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <h2>Twój profil</h2>
+                        <img class="avatar" src="~/Images/user.png" alt="avatar" /> <!-- dodac ladowanie zdjęcia -->
+                        <p>Edytuj swój profil: zmień maila i dodaj najnowsze zdjęcie profilowe! </p>
+                        @User.Identity.Name
+
+
+
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- Profil Section -->
-    <section id="profil" class="content-section text-center">
-        <div class="download-section">
-            <div class="container">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <h2>Twój profil</h2>
-                    <img class="avatar" src="~/Images/user.png" alt="avatar"/> <!-- dodac ladowanie zdjęcia -->
-                    <p>Edytuj swój profil: zmień maila i dodaj najnowsze zdjęcie profilowe! </p>
-                    <form>
-                        <fieldset class="form-group">
-                            <label for="email">Email address</label>
-                            <input type="email" class="form-control" id="email" placeholder="Email">
-                            <small class="text-muted">Email można zmienić</small>
-                        </fieldset>
-                        <fieldset class="form-group">
-                            <label for="imie">Password</label>
-                            <input type="text" class="form-control" id="imie" placeholder="Imie">
-                        </fieldset>
-                        <fieldset class="form-group">
-                            <label for="nazwisko">Password</label>
-                            <input type="text" class="form-control" id="nazwisko" placeholder="Nazwisko">
-                        </fieldset>
-                        <fieldset class="form-group">
-                            <label for="wiek">Password</label>
-                            <input type="number" class="form-control" id="wiek" placeholder="Wiek">
-                        </fieldset>
-                        <fieldset class="form-group">
-                            <label for="stare_haslo">Stare hasło</label>
-                            <input type="password" class="form-control" id="stare_haslo" placeholder="Password">
-                        </fieldset>
-                        <fieldset class="form-group">
-                            <label for="nowe_haslo1">Nowe hasło</label>
-                            <input type="password" class="form-control" id="nowe_haslo1" placeholder="Password">
-                        </fieldset>
-                        <fieldset class="form-group">
-                            <label for="nowe_haslo2">Potwierdź nowe hasło</label>
-                            <input type="password" class="form-control" id="nowe_haslo1" placeholder="Password">
-                        </fieldset>
-                        <button style="color:azure" type="submit" id="potwierdz_zmiany_profilu_button" class="btn btn-primary">Potwierdź zmiany</button>
-                    </form>
-                       
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    }
+    
 
-    <!-- Footer -->
-    <footer>
-        <div class="container text-center">
+        <!-- Footer -->
+        <footer>
+            <div class="container text-center">
                 <p>Copyright &copy; Your Website 2014</p>
         </div>
     </footer>
@@ -182,6 +146,7 @@
     <!-- Custom Theme JavaScript -->
     <script src="~/Scripts/grayscale.js"></script>
     <script src="~/Scripts/sryptyAni.js"></script>
+    <script src="~/Scripts/SkryptJanusza.js"></script>
 
 </body>
 </html>
