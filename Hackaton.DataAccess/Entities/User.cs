@@ -4,23 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Shared;
 
 namespace Hackaton.DataAccess.Entities
 {
-    public enum Gender
-    {
-        Male,
-        Female
-    }
-
-    public enum AdvanceLevel
-    {
-        Beginner,
-        Novice,
-        Medium,
-        Expert
-    }
-
     public class User : IdentityUser
     {
         public string Name { get; set; }
