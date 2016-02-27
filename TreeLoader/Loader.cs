@@ -29,29 +29,31 @@ namespace TreeLoader
             DeserializedObject result = (DeserializedObject)JsonConvert.DeserializeObject(json, typeof(DeserializedObject));
             var trees = result.result.records;
 
-            foreach (var tree in trees)
+            int i = 1;
+            using (ApplicationDbContext ctx = new ApplicationDbContext())
             {
-                InsertTree(tree);
+                foreach (var tree in trees)
+                {
+                    InsertTree(tree, ctx, i++);
+                }
+                ctx.SaveChanges();
             }
         }
 
-        private void InsertTree(Tree tree)
+        private void InsertTree(Tree tree, ApplicationDbContext ctx, int i)
         {
-            using (ApplicationDbContext ctx = new ApplicationDbContext())
+            if (!ctx.Trees.Any(t => t.InventoryNumber == tree.numer_inw))
             {
-                if (!ctx.Trees.Any(t => t.InventoryNumber == tree.numer_inw))
+                ctx.Trees.Add(new Hackaton.DataAccess.Entities.Tree()
                 {
-                    ctx.Trees.Add(new Hackaton.DataAccess.Entities.Tree()
-                    {
-                        InventoryNumber = tree.numer_inw,
-                        Address = tree.adres,
-                        CoordX = tree.x_wgs84,
-                        CoordY = tree.y_wgs84,
-                        Location = tree.lokalizacja,
-                        Type = tree.gatunek
-                    });
-                    Console.WriteLine("Dodano drzewo: X: {0} Y:{1} Gatunek: {2} Adres: {3}", tree.x_wgs84, tree.y_wgs84, tree.gatunek, tree.adres);
-                }
+                    InventoryNumber = tree.numer_inw,
+                    Address = tree.adres,
+                    CoordX = tree.x_wgs84,
+                    CoordY = tree.y_wgs84,
+                    Location = tree.lokalizacja,
+                    Type = tree.gatunek
+                });
+                Console.WriteLine("{0} || Dodano drzewo: {1} X: {2} Y:{3} ", i, tree.numer_inw, tree.x_wgs84, tree.y_wgs84);
             }
         }
     }
