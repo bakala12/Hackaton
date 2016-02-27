@@ -39,8 +39,20 @@ namespace TreeLoader
         {
             using (ApplicationDbContext ctx = new ApplicationDbContext())
             {
-               // if (!ctx.Trees.Any())
-            }        
-}
+                if (!ctx.Trees.Any(t => t.InventoryNumber == tree.numer_inw))
+                {
+                    ctx.Trees.Add(new Hackaton.DataAccess.Entities.Tree()
+                    {
+                        InventoryNumber = tree.numer_inw,
+                        Address = tree.adres,
+                        CoordX = tree.x_wgs84,
+                        CoordY = tree.y_wgs84,
+                        Location = tree.lokalizacja,
+                        Type = tree.gatunek
+                    });
+                    Console.WriteLine("Dodano drzewo: X: {0} Y:{1} Gatunek: {2} Adres: {3}", tree.x_wgs84, tree.y_wgs84, tree.gatunek, tree.adres);
+                }
+            }
+        }
     }
 }
