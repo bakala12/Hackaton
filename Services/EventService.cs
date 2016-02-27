@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -15,25 +17,17 @@ namespace Services
     public class EventService
     {
         private readonly ApplicationDbContext context = new ApplicationDbContext();
-        private readonly IMapper mapper;
 
-        public EventService()
-        {
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<User, UserDto>();
-                cfg.CreateMap<UserDto, User>();
-                cfg.CreateMap<Event, EventDto>();
-                cfg.CreateMap<EventDto, Event>();
-                cfg.CreateMap<TreeDto, TreeDto>();
-                cfg.CreateMap<Tree, TreeDto>();
-            });
-            mapper = config.CreateMapper();
-        }
 
         public async Task<List<EventDto>> GetEventsDtoList()
         {
-            return mapper.Map<List<Event>, List<EventDto>>(await context.Events.ToListAsync());
+            return AutoMapper.Instance.Map<List<Event>, List<EventDto>>(await context.Events.ToListAsync());
+        }
+
+        public async Task<List<EventDto>> GetEventsDtoListForUser(string userId)
+        {
+            var userEvents = await context.Events.Where(e => e.Participants.Any(u => u.Id == userId)).ToListAsync();
+            return AutoMapper.Instance.Map<List<Event>, List<EventDto>>(userEvents);        
         }
 
     }
