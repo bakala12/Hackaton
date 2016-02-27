@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{22058A2D-29F8-4DBF-BE04-8CC55B5E63EB}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{C8994FE9-81A4-44F1-BAC1-13D70951067E}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Hackaton.DataAccess</RootNamespace>
-    <AssemblyName>Hackaton.DataAccess</AssemblyName>
+    <RootNamespace>TreeLoader</RootNamespace>
+    <AssemblyName>TreeLoader</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -46,9 +49,15 @@
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,54 +66,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationDbContext.cs" />
-    <Compile Include="ApplicationUser.cs" />
-    <Compile Include="Entities\Entity.cs" />
-    <Compile Include="Entities\Tree.cs" />
-    <Compile Include="Entities\Event.cs" />
-    <Compile Include="Entities\User.cs" />
-    <Compile Include="Migrations\201602271021366_init.cs" />
-    <Compile Include="Migrations\201602271021366_init.Designer.cs">
-      <DependentUpon>201602271021366_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602271212048_entitiesAdded.cs" />
-    <Compile Include="Migrations\201602271212048_entitiesAdded.Designer.cs">
-      <DependentUpon>201602271212048_entitiesAdded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602271249350_TreeChanges.cs" />
-    <Compile Include="Migrations\201602271249350_TreeChanges.Designer.cs">
-      <DependentUpon>201602271249350_TreeChanges.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602271320307_deleteTreeNumber.cs" />
-    <Compile Include="Migrations\201602271320307_deleteTreeNumber.Designer.cs">
-      <DependentUpon>201602271320307_deleteTreeNumber.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Objects\DeserializedObject.cs" />
+    <Compile Include="Loader.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Entities\UserImage.cs" />
+    <Compile Include="Objects\Result.cs" />
+    <Compile Include="Objects\Tree.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201602271021366_init.resx">
-      <DependentUpon>201602271021366_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602271212048_entitiesAdded.resx">
-      <DependentUpon>201602271212048_entitiesAdded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602271249350_TreeChanges.resx">
-      <DependentUpon>201602271249350_TreeChanges.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602271320307_deleteTreeNumber.resx">
-      <DependentUpon>201602271320307_deleteTreeNumber.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Shared\Shared.csproj">
-      <Project>{8F916C44-D6D8-4A66-876C-FE547089574C}</Project>
-      <Name>Shared</Name>
+    <ProjectReference Include="..\Hackaton.DataAccess\Hackaton.DataAccess.csproj">
+      <Project>{22058a2d-29f8-4dbf-be04-8cc55b5e63eb}</Project>
+      <Name>Hackaton.DataAccess</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
