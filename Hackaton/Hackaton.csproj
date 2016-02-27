@@ -294,6 +294,7 @@
     <Content Include="Views\Events\Details.cshtml" />
     <Content Include="Views\Events\Edit.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
+    <Content Include="Views\Account\EditProfile.cshtml" />
     <Content Include="Views\Events\ForUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
