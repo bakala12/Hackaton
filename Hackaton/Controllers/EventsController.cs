@@ -1,55 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using AutoMapper;
 using Hackaton.DataAccess;
 using Hackaton.DataAccess.Entities;
-using Hackaton.Models;
 using Services;
-using Shared.Dtos;
+// ReSharper disable InconsistentNaming
 
 namespace Hackaton.Controllers
 {
     public class EventsController : Controller
     {
-        private EventService eventService;
-        private IMapper mapper;
+        private readonly EventService eventService = new EventService();
 
-        public EventsController()
-        {
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<User, UserDto>();
-                cfg.CreateMap<UserDto, User>();
-                cfg.CreateMap<Event, EventDto>();
-                cfg.CreateMap<EventDto, Event>();
-                cfg.CreateMap<TreeDto, TreeDto>();
-                cfg.CreateMap<Tree, TreeDto>();
-            });
-            mapper = config.CreateMapper();
-        }
 
         // GET: Events
         public async Task<ActionResult> Index()
         {
-            return System.Web.UI.WebControls.View(mapper.Map<List<Event>, List<EventDto>>(await db.Events.ToListAsync()));
+            return View(await eventService.GetEventsDtoList());
         }
 
         //// GET: Events/Details/5
-        //public ActionResult Details(int? id)
+        //public async Task<ActionResult> Details(int? id)
         //{
         //    if (id == null)
         //    {
         //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         //    }
-        //    EventDto @event = db.Events.Find(id);
+        //    Event @event = await db.Events.FindAsync(id);
         //    if (@event == null)
         //    {
         //        return HttpNotFound();
@@ -68,12 +51,12 @@ namespace Hackaton.Controllers
         //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         //[HttpPost]
         //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "Id,Name,Description,EventType,Date")] Event @event)
+        //public async Task<ActionResult> Create([Bind(Include = "Id,Name,Description,EventType,Date")] Event @event)
         //{
         //    if (ModelState.IsValid)
         //    {
         //        db.Events.Add(@event);
-        //        db.SaveChanges();
+        //        await db.SaveChangesAsync();
         //        return RedirectToAction("Index");
         //    }
 
@@ -81,13 +64,13 @@ namespace Hackaton.Controllers
         //}
 
         //// GET: Events/Edit/5
-        //public ActionResult Edit(int? id)
+        //public async Task<ActionResult> Edit(int? id)
         //{
         //    if (id == null)
         //    {
         //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         //    }
-        //    EventDto @event = db.Events.Find(id);
+        //    Event @event = await db.Events.FindAsync(id);
         //    if (@event == null)
         //    {
         //        return HttpNotFound();
@@ -100,25 +83,25 @@ namespace Hackaton.Controllers
         //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         //[HttpPost]
         //[ValidateAntiForgeryToken]
-        //public ActionResult Edit([Bind(Include = "Id,Name,Description,EventType,Date")] Event @event)
+        //public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Description,EventType,Date")] Event @event)
         //{
         //    if (ModelState.IsValid)
         //    {
         //        db.Entry(@event).State = EntityState.Modified;
-        //        db.SaveChanges();
+        //        await db.SaveChangesAsync();
         //        return RedirectToAction("Index");
         //    }
         //    return View(@event);
         //}
 
         //// GET: Events/Delete/5
-        //public ActionResult Delete(int? id)
+        //public async Task<ActionResult> Delete(int? id)
         //{
         //    if (id == null)
         //    {
         //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         //    }
-        //    Event @event = db.Events.Find(id);
+        //    Event @event = await db.Events.FindAsync(id);
         //    if (@event == null)
         //    {
         //        return HttpNotFound();
@@ -129,21 +112,12 @@ namespace Hackaton.Controllers
         //// POST: Events/Delete/5
         //[HttpPost, ActionName("Delete")]
         //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
+        //public async Task<ActionResult> DeleteConfirmed(int id)
         //{
-        //    Event @event = db.Events.Find(id);
+        //    Event @event = await db.Events.FindAsync(id);
         //    db.Events.Remove(@event);
-        //    db.SaveChanges();
+        //    await db.SaveChangesAsync();
         //    return RedirectToAction("Index");
         //}
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }
