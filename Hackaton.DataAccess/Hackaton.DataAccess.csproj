@@ -103,7 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shared\Shared.csproj">
-      <Project>{8F916C44-D6D8-4A66-876C-FE547089574C}</Project>
+      <Project>{8f916c44-d6d8-4a66-876c-fe547089574c}</Project>
       <Name>Shared</Name>
     </ProjectReference>
   </ItemGroup>
