@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="ApplicationUser.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="Migrations\201602271021366_init.cs" />
     <Compile Include="Migrations\201602271021366_init.Designer.cs">
       <DependentUpon>201602271021366_init.cs</DependentUpon>
@@ -75,6 +76,7 @@
       <DependentUpon>201602271021366_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
