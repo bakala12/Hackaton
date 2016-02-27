@@ -39,7 +39,7 @@ namespace TreeLoader
         {
             using (ApplicationDbContext ctx = new ApplicationDbContext())
             {
-                if (!ctx.Trees.Any())
+               // if (!ctx.Trees.Any())
             }        
 }
     }

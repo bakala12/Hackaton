@@ -71,6 +71,10 @@
     <Compile Include="Migrations\201602271212048_entitiesAdded.Designer.cs">
       <DependentUpon>201602271212048_entitiesAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602271249350_TreeChanges.cs" />
+    <Compile Include="Migrations\201602271249350_TreeChanges.Designer.cs">
+      <DependentUpon>201602271249350_TreeChanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\UserImage.cs" />
@@ -85,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602271212048_entitiesAdded.resx">
       <DependentUpon>201602271212048_entitiesAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602271249350_TreeChanges.resx">
+      <DependentUpon>201602271249350_TreeChanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
