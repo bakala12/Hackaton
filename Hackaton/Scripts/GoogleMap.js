@@ -12,8 +12,8 @@
     map.mapTypes.set('map_style', styledMap);
     map.setMapTypeId('map_style');
 
- //   displayTrees(map);
     google.maps.event.addListener(map, 'bounds_changed', function () {
+        hideMarkers();
         displayTrees(map, map.getBounds());
     });
 
@@ -21,6 +21,7 @@
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
+var markers = [];
 
 function displayTrees(map, bounds) {
     var southWest = bounds.getSouthWest();
@@ -41,6 +42,7 @@ function displayTrees(map, bounds) {
                     position: { lat: results[i].CoordY, lng: results[i].CoordX },
                     icon: '../Images/tree_green.png'
                 });
+                markers.push(marker);
                 marker.setMap(map);
             }
         },
@@ -48,4 +50,11 @@ function displayTrees(map, bounds) {
             alert('Error occured');
         }
     });
+}
+
+function hideMarkers() {
+    for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(null);
+    }
+    markers = [];
 }
