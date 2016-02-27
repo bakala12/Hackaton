@@ -61,6 +61,7 @@ namespace Hackaton.Controllers
                 : message == ManageMessageId.Error ? "An error has occurred."
                 : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
+                : message == ManageMessageId.ChangeEmailSuccess ? "Your email was changed"
                 : "";
 
             var userId = User.Identity.GetUserId();
@@ -242,6 +243,29 @@ namespace Hackaton.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangeEmail(ChangeEmailViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var result = await UserManager.ChangePhoneNumberAsync(User.Identity.GetUserId(), model.OldEmail, model.NewEmail);
+            //var result = await UserManager.ChangeEmailAsync(User.Identity.GetUserId(), model.OldEmail, model.NewEmail);
+            if (result.Succeeded)
+            {
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                if (user != null)
+                {
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                }
+                return RedirectToAction("Index", new { Message = ManageMessageId.ChangeEmailSuccess });
+            }
+            AddErrors(result);
+            return View(model);
+        }
+
         //
         // GET: /Manage/SetPassword
         public ActionResult SetPassword()
@@ -379,7 +403,8 @@ namespace Hackaton.Controllers
             SetPasswordSuccess,
             RemoveLoginSuccess,
             RemovePhoneSuccess,
-            Error
+            Error,
+            ChangeEmailSuccess
         }
 
 #endregion

@@ -58,6 +58,19 @@ namespace Hackaton.Models
         public string ConfirmPassword { get; set; }
     }
 
+    public class ChangeEmailViewModel
+    {
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "Current Email")]
+        public string OldEmail { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "New Email")]
+        public string NewEmail { get; set; }
+    }
+
     public class AddPhoneNumberViewModel
     {
         [Required]
