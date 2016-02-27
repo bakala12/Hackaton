@@ -49,36 +49,63 @@ namespace Hackaton.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
+        [Display(Name = "Nazwa użytkownika")]
+        public string Login { get; set; }
+
+        [Required]
+        [Display(Name = "Nazwa użytkownika")]
         [EmailAddress]
         public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Hasło")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Pamiętaj mnie")]
         public bool RememberMe { get; set; }
     }
 
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "Nazwa użytkownika")]
+        public string Login { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Hasło")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Potwierdź hasło")]
+        [Compare("Password", ErrorMessage = "Hasła nie są zgodne.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Imię")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Nazwisko")]
+        public string LastName { get; set; }
+
+        [Required]
+        [Display(Name = "Płeć")]
+        public Sex Sex { get; set; }
+    }
+
+    public enum Sex
+    {
+        [Display(Name = "Mężczyzna")]
+        Male,
+        [Display(Name = "Kobieta")]
+        Female
     }
 
     public class ResetPasswordViewModel
