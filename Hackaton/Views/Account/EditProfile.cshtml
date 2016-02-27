@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "EditProfile";
+}
+
+<h2>EditProfile</h2>
+<form>
+    <fieldset class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" id="email" placeholder="Email">
+        <small class="text-muted">Email można zmienić</small>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="imie">Password</label>
+        <input type="text" class="form-control" id="imie" placeholder="Imie">
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="nazwisko">Password</label>
+        <input type="text" class="form-control" id="nazwisko" placeholder="Nazwisko">
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="wiek">Password</label>
+        <input type="number" class="form-control" id="wiek" placeholder="Wiek">
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="stare_haslo">Stare hasło</label>
+        <input type="password" class="form-control" id="stare_haslo" placeholder="Password">
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="nowe_haslo1">Nowe hasło</label>
+        <input type="password" class="form-control" id="nowe_haslo1" placeholder="Password">
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="nowe_haslo2">Potwierdź nowe hasło</label>
+        <input type="password" class="form-control" id="nowe_haslo1" placeholder="Password">
+    </fieldset>
+    <button style="color:azure" type="submit" id="potwierdz_zmiany_profilu_button" class="btn btn-primary">Potwierdź zmiany</button>
+    @Html.ActionLink("Zarejestruj", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
+    <!-- tutaj kolor zmienic lel -->
+</form>
+
