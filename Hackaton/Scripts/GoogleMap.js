@@ -22,6 +22,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 var markers = [];
 var selectedMarker;
+var infowindow;
 
 function displayTrees(map, bounds) {
     var southWest = bounds.getSouthWest();
@@ -54,7 +55,22 @@ function displayTrees(map, bounds) {
                     }
                     this.setIcon('../Images/tree_blue.png');
                     selectedMarker = this;
+
+                    var contentString = '<div id="content">' + "tralalalala" + '</div>';
+
+                    if (infowindow) {
+                        infowindow.close();
+                    }
+                    infowindow = new google.maps.InfoWindow({
+                        content: contentString
+                    });
+
+                    infowindow.open(map, this);
                 });
+
+
+
+           
             }
 
         },
