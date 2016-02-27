@@ -6,9 +6,11 @@ namespace Shared
     {
         [Description("trucht")]
         Jog,
+        [Description("strint")]
         Sprint,
         [Description("bieg interwałowy")]
         Interval,
+        [Description("bieg długodystansowy")]
         LongRun
     }
 }
