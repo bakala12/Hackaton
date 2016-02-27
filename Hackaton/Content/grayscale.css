@@ -278,6 +278,9 @@ a:focus {
     margin-top: 100px;
 }
 
+.avatar{
+    margin: 0 auto;
+}
 @media(min-width:767px) {
     .content-section {
         padding-top: 50px;
