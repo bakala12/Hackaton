@@ -10,6 +10,8 @@ namespace Hackaton.Controllers
     {
         public ActionResult Index()
         {
+
+            ViewBag.Message = "Główna stronka";
             return View();
         }
 
