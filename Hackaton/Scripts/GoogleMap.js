@@ -59,7 +59,7 @@ function displayTrees(map, bounds) {
                     this.setIcon('../Images/tree_blue.png');
                     selectedMarker = this;
                     var contentString;
-                    if (IsTreeAvailable(results[i].Id) === true) {
+                    if (IsTreeAvailable(treeId) === true) {
                         contentString = '<div id="content">' + '<button id="contentCloud">tralalalala</button>' + '</div>';
                     } else {
                         contentString = '<div id="content">' + '<button id="contentCloud">bebebebe</button>' + '</div>';
@@ -106,7 +106,7 @@ function hideMarkers() {
 function IsTreeAvailable(treeId)
 {
     $.ajax({
-        url: "Events/IsTreeAvailable",
+        url: "Events/IsEventInTree",
         type: "POST",
         dataType: "json",
         cache: false,

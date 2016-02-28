@@ -48,5 +48,12 @@ namespace Hackaton.Controllers
             eventDto.Tree = await treeService.GetTree(id);
             return View(eventDto);
         }
+
+        [HttpPost]
+        public bool IsEventInTree(int treeId)
+        {
+            var result= treeService.IsEventInTree(treeId);
+            return result;
+        }
     }
 }
