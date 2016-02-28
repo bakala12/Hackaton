@@ -20,11 +20,16 @@ namespace Hackaton
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/jquery-1.10.2.js",
+                      "~/Scripts/jquery.easing.min.js",
+                      "~/Scripts/bootstrap.min.js",
+                      "~/Scripts/respond.js",
+                      "~/Scripts/grayscale.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/bootstrap.css",
+                      "~/Content/grayscale.css",
                       "~/Content/site.css"));
         }
     }
