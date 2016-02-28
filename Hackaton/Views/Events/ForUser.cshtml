@@ -80,7 +80,6 @@
         <div>
             <div style="width:50%;margin:0 auto; background-color:lightslategray;">
                 <div class="row">
-
                     <div class="col-md-8 box-table" style="margin:0 auto;">
                         <section class="panel">
                             <header class="panel-heading header-text-class">
@@ -102,31 +101,29 @@
                                         {
                                             <tr>
                                                 <td>
-                                                    <div class="tabledivclass" id="@ev.Id">
-                                                        <span>@ev.Name</span>
-                                                        <span>@ev.Date</span>
-                                                        <span>@ev.Description</span>
-                                                        <span>@ev.Organizer</span>
-                                                        <div id="participants+@ev.Id" class="invisible-participants">
-                                                            <ul>
-                                                                @{
-                                                                    if (ev.Participants?.Count > 0)
-                                                                    {
-                                                                        foreach (var participant in ev.Participants)
-                                                                        {
-                                                                            <li>
-                                                                                <div>@Html.Label(participant.Name);</div>
-                                                                                <div>@Html.Label(participant.Surname);</div>
-                                                                            </li>
-                                                                        }
-                                                                    }
-                                                                }
-                                                            </ul>
-                                                        </div>
-                                                    </div>
+                                                    <span>@ev.Name</span>
+                                                </td>
+                                                <td><span>@ev.Date</span></td>
+                                                <td><span>@ev.Description</span></td>
+                                                <td>
+                                                    <span>
+                                                        @Html.Label(ev.Organizer.Name + " " + ev.Organizer.Surname)
+                                                    </span>
                                                 </td>
                                             </tr>
-                                                                    }
+                                            if (ev.Participants?.Count > 0)
+                                            {
+                                                foreach (var participant in ev.Participants)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <div>@Html.Label(participant.Name + " "+participant.Surname);</div>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                        }
+                                        }
                                     </tbody>
                                 </table>
                             </div>
@@ -134,6 +131,7 @@
 
 
                     </div><!--end col-6 -->
+                    
                 </div>
             </div>
         </div>
