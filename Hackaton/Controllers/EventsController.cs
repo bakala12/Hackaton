@@ -10,8 +10,10 @@ using System.Web.Mvc;
 using Hackaton.DataAccess;
 using Hackaton.DataAccess.Entities;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using Services;
 using Shared.Dtos;
+using AutoMapper = Services.AutoMapper;
 
 // ReSharper disable InconsistentNaming
 
@@ -21,7 +23,7 @@ namespace Hackaton.Controllers
     {
         private readonly EventService eventService = new EventService();
         private readonly TreeService treeService = new TreeService();
-        
+        private readonly UserService userService = new UserService();
 
         // GET: Events
         public async Task<ActionResult> Index()
@@ -37,6 +39,13 @@ namespace Hackaton.Controllers
         [HttpPost]
         public async Task<ActionResult> CreatePageNearTree(EventDto eventDto)
         {
+            var userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            // to jest zjebane, ale dziala, w eventDto.Id jest id drzewa
+            eventDto.Tree = await treeService.GetTree(eventDto.Id);
+            Event @event = Services.AutoMapper.Instance.Map<EventDto, Event>(eventDto);
+            @event.Organizer = userService.GetUser(User.Identity.GetUserId());
+            @event.Participants = new List<User>();
+            @event.Participants.Add(userService.GetUser(User.Identity.GetUserId()));
             await eventService.AddEvent(eventDto);
             return RedirectToRoute("");
         }

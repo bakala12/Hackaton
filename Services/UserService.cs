@@ -1,4 +1,7 @@
-﻿using System.Net;
+﻿using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Runtime.Remoting.Messaging;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Hackaton.DataAccess;
@@ -22,6 +25,11 @@ namespace Services
             await userManager.UpdateAsync(user);
             await context.SaveChangesAsync();
             return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
+
+        public User GetUser(string id)
+        {
+            return context.IdentityUsers.FirstOrDefault(u => u.Id == id);
         }
     }
 }
