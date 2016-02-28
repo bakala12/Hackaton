@@ -14,6 +14,7 @@ namespace Hackaton.Controllers
 
         private class EventTree
         {
+            public bool IsAuthenticated { get; set; }
             public int Id { get; set; }
             public double CoordX { get; set; }
             public double CoordY { get; set; }
@@ -35,11 +36,11 @@ namespace Hackaton.Controllers
                 var checkedTrees = ctx.Events.Select(e => e.Tree).Where(t =>
                     t.CoordX > southWestX && t.CoordX < northEastX &&
                     t.CoordY < northEastY && t.CoordY > southWestY).Take(treesCount).ToList();
-
                 foreach (var v in checkedTrees)
                 {
                     ret.Add(new EventTree()
                     {
+                        IsAuthenticated = User.Identity.IsAuthenticated,
                         Id = v.Id,
                         CoordX = v.CoordX,
                         CoordY = v.CoordY,
@@ -61,6 +62,7 @@ namespace Hackaton.Controllers
                     {
                         ret.Add(new EventTree()
                         {
+                            IsAuthenticated = User.Identity.IsAuthenticated,
                             Id = v.Id,
                             CoordX = v.CoordX,
                             CoordY = v.CoordY,
