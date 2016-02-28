@@ -37,7 +37,8 @@ function displayTrees(map, bounds) {
             'southWestX': southWest.lng(),
             'southWestY': southWest.lat(),
             'northEastX': northEast.lng(),
-            'northEastY': northEast.lat()
+            'northEastY': northEast.lat(),
+            'zoom': map.getZoom()
         },
         success: function (results) {
             hideMarkers();
@@ -52,7 +53,7 @@ function displayTrees(map, bounds) {
                 markers.push(marker);
                 marker.setMap(map);
                 var treeId = results[i].Id;
-                google.maps.event.addListener(marker, 'click', function() {
+                google.maps.event.addListener(marker, 'click', function () {
                     if (selectedMarker) {
                         selectedMarker.setIcon('../Images/tree_green.png');
                     }
@@ -103,8 +104,7 @@ function hideMarkers() {
     markers = [];
 }
 
-function IsTreeAvailable(treeId)
-{
+function IsTreeAvailable(treeId) {
     $.ajax({
         url: "Events/IsTreeAvailable",
         type: "POST",

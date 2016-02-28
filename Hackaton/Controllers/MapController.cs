@@ -21,7 +21,7 @@ namespace Hackaton.Controllers
 
         }
 
-        public JsonResult GetTrees(double southWestX, double southWestY, double northEastX, double northEastY)
+        public JsonResult GetTrees(double southWestX, double southWestY, double northEastX, double northEastY, int zoom)
         {
             using (ApplicationDbContext ctx = new ApplicationDbContext())
             {
@@ -30,7 +30,7 @@ namespace Hackaton.Controllers
                 int c = ctx.Trees.Count(t =>
                     t.CoordX > southWestX && t.CoordX < northEastX &&
                     t.CoordY < northEastY && t.CoordY > southWestY);
-                
+
                 var checkedTrees = ctx.Events.Select(e => e.Tree).Where(t =>
                     t.CoordX > southWestX && t.CoordX < northEastX &&
                     t.CoordY < northEastY && t.CoordY > southWestY).Take(treesCount);
@@ -48,12 +48,11 @@ namespace Hackaton.Controllers
 
                 if (treesCount != ret.Count)
                 {
-                    int step = c / (treesCount - checkedTrees.Count());
-                if (step == 0) step = 1;
+                    int step = GetStepFromZoom(zoom);
 
-                var trees = ctx.Trees.Where(t => t.Id % step == 0 &&
-                    t.CoordX > southWestX && t.CoordX < northEastX &&
-                                                     t.CoordY < northEastY && t.CoordY > southWestY).ToList();
+                    var trees = ctx.Trees.Where(t => t.Id % step == 0 &&
+                        t.CoordX > southWestX && t.CoordX < northEastX &&
+                                                         t.CoordY < northEastY && t.CoordY > southWestY).ToList();
                     trees = trees.Where(t => !ret.Select(re => re.Id).Contains(t.Id)).ToList();
 
                     foreach (var v in trees)
@@ -69,6 +68,33 @@ namespace Hackaton.Controllers
                 }
                 return Json(ret, JsonRequestBehavior.AllowGet);
             }
+        }
+
+        private int GetStepFromZoom(int zoom)
+        {
+            switch (zoom)
+            {
+                case 11:
+                    return 1000;
+                case 12:
+                    return 700;
+                case 13:
+                    return 400;
+                case 14:
+                    return 150;
+                case 15:
+                    return 50;
+                case 16:
+                    return 10;
+                case 17:
+                    return 3;
+                case 18:
+                    return 1;
+            }
+            if (zoom > 18)
+                return 1;
+            else
+                return 2000;
         }
 
     }
