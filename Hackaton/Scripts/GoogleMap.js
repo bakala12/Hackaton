@@ -47,7 +47,7 @@ function displayTrees(map, bounds) {
                     icon: '../Images/tree_green.png'
                 });
                 if (results[i].IsEvent) {
-                    selectedMarker.setIcon('../Images/tree_red.png');
+                    marker.setIcon('../Images/tree_red.png');
                 }
                 markers.push(marker);
                 marker.setMap(map);
