@@ -1,3 +1,11 @@
 ﻿.tabledivclass {
     
 }
+
+.invisible-participants {
+    visibility: hidden;
+}
+
+.visible-participants {
+    visibility: visible;
+}

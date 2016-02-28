@@ -27,7 +27,7 @@ namespace Hackaton.Controllers
         {
             return View(await eventService.GetEventsDtoList());
         }
-        [HttpPost]
+        [HttpGet]
         public async Task<ActionResult> ForUser()
         {
             return View(await eventService.GetEventsDtoListForUser(User.Identity.GetUserId()));

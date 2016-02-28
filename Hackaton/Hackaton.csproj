@@ -202,7 +202,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\KontrolerJanusza.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MapController.cs" />
     <Compile Include="Global.asax.cs">
@@ -220,6 +219,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\datepicker3.css" />
     <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\Foruserhoverstyle.css" />
     <Content Include="Content\grayscale.css" />
     <Content Include="Content\jquery-jvectormap-1.2.2.css" />
     <Content Include="Content\style.css" />
@@ -249,6 +249,7 @@
     <Content Include="Images\Thumbs.db" />
     <None Include="Properties\PublishProfiles\przydrzewie - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\foruserhoverscript.js" />
     <Content Include="Scripts\GoogleMap.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -304,11 +305,11 @@
     <Content Include="Views\Events\Index.cshtml" />
     <Content Include="Views\Account\EditProfile.cshtml" />
     <Content Include="Views\Events\ForUser.cshtml" />
+    <Content Include="Views\Home\AllEvents.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\font-awesome\" />
-    <Folder Include="Views\KontrolerJanusza\" />
     <Folder Include="Views\List\" />
   </ItemGroup>
   <ItemGroup>
