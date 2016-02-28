@@ -53,6 +53,7 @@ function displayTrees(map, bounds) {
                 markers.push(marker);
                 marker.setMap(map);
                 marker.content = results[i].IsEvent;
+                treeId = results[i].Id;
                 google.maps.event.addListener(marker, 'click', function () {
                     if (selectedMarker) {
                         if (selectedMarker.content) {
@@ -80,7 +81,7 @@ function displayTrees(map, bounds) {
                     infowindow.open(map, this);
                     $('#contentCloud').click(function createEvent() {
                        // window.location.replace(location.origin + "/Events/CreatePageNearTree/" + treeId);
-                        window.location.replace(location.origin + "/Events/CreatePageNearTree/" + 1);
+                        window.location.replace(location.origin + "/Events/CreatePageNearTree/" + this.content.Id);
                         //$.post('Events/Create', { 'treeId': treeId }, function () { }, 'json');
                         //$.ajax({
                         //    url: 'Events/Create',

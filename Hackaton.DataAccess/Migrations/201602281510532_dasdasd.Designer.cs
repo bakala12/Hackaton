@@ -7,13 +7,13 @@ namespace Hackaton.DataAccess.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Relationship : IMigrationMetadata
+    public sealed partial class dasdasd : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Relationship));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(dasdasd));
         
         string IMigrationMetadata.Id
         {
-            get { return "201602281405349_Relationship"; }
+            get { return "201602281510532_dasdasd"; }
         }
         
         string IMigrationMetadata.Source
