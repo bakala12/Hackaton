@@ -47,7 +47,7 @@ function displayTrees(map, bounds) {
                     icon: '../Images/tree_green.png'
                 });
                 if (results[i].IsEvent) {
-                    selectedMarker.setIcon('../Images/tree_red.png');
+                    marker.setIcon('../Images/tree_red.png');
                 }
                 markers.push(marker);
                 marker.setMap(map);
@@ -58,10 +58,12 @@ function displayTrees(map, bounds) {
                     }
                     this.setIcon('../Images/tree_blue.png');
                     selectedMarker = this;
-
-
-                    var contentString = '<div id="content">' + '<button id="contentCloud">tralalalala</button>' + '</div>';
-
+                    var contentString;
+                    if (IsTreeAvailable(results[i].Id) === true) {
+                        contentString = '<div id="content">' + '<button id="contentCloud">tralalalala</button>' + '</div>';
+                    } else {
+                        contentString = '<div id="content">' + '<button id="contentCloud">bebebebe</button>' + '</div>';
+                    }
 
                     if (infowindow) {
                         infowindow.close();
@@ -99,4 +101,23 @@ function hideMarkers() {
         markers[i].setMap(null);
     }
     markers = [];
+}
+
+function IsTreeAvailable(treeId)
+{
+    $.ajax({
+        url: "Events/IsTreeAvailable",
+        type: "POST",
+        dataType: "json",
+        cache: false,
+        data: {
+            'treeId': treeId
+        },
+        success: function (result) {
+            return result;
+        },
+        error: function () {
+            alert("Error occured");
+        }
+    });
 }
