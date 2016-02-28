@@ -49,9 +49,7 @@
       <![endif]-->
 
     <style type="text/css">
-        </style>
-
-    <script type="text/javascript" src="../../Scripts/foruserhoverscript.js"></script>
+    </style>
 </head>
 
 <body>
@@ -80,11 +78,27 @@
                                     {
                                         <tr>
                                             <td>
-                                                <div class="tabledivclass" id="@ev.Id" onmouseover="mouseOverDiv(this)">
+                                                <div class="tabledivclass" id="@ev.Id">
                                                     <span>@ev.Name</span>
                                                     <span>@ev.Date</span>
                                                     <span>@ev.Description</span>
                                                     <span>@ev.Organizer</span>
+                                                    <div id="participants+@ev.Id" class="invisible-participants">
+                                                        <ul>
+                                                            @{
+                                                                if (ev.Participants?.Count > 0)
+                                                                {
+                                                                    foreach (var participant in ev.Participants)
+                                                                    {
+                                                                        <li>
+                                                                            <div>@Html.Label(participant.Name);</div>
+                                                                            <div>@Html.Label(participant.Surname);</div>
+                                                                        </li>
+                                                                    }
+                                                                }
+                                                            }
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </td>
                                         </tr>
