@@ -53,6 +53,7 @@ function displayTrees(map, bounds) {
                 markers.push(marker);
                 marker.setMap(map);
                 marker.content = results[i].IsEvent;
+                treeId = results[i].Id;
                 google.maps.event.addListener(marker, 'click', function () {
                     if (selectedMarker) {
                         if (selectedMarker.content) {

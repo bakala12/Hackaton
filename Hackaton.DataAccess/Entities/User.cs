@@ -8,7 +8,7 @@ using Shared;
 
 namespace Hackaton.DataAccess.Entities
 {
-    public class User : IdentityUser 
+    public class User : Entity
     {
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -18,7 +18,7 @@ namespace Hackaton.DataAccess.Entities
         public double Weight { get; set; }
         public AdvanceLevel AdvanceLevel { get; set; }
         public virtual UserImage Image { get; set; }
-        public virtual ApplicationUser ApplicationUser { get; set; }
+        public string ApplicationUserId { get; set; }
         public virtual List<Event> EventList { get; set; }
 
     }

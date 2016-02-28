@@ -39,15 +39,14 @@ namespace Hackaton.Controllers
         [HttpPost]
         public async Task<ActionResult> CreatePageNearTree(EventDto eventDto)
         {
-            var userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             // to jest zjebane, ale dziala, w eventDto.Id jest id drzewa
             eventDto.Tree = await treeService.GetTree(eventDto.Id);
             Event @event = Services.AutoMapper.Instance.Map<EventDto, Event>(eventDto);
-            @event.Organizer = userService.GetUser(User.Identity.GetUserId());
-            @event.Participants = new List<User>();
-            @event.Participants.Add(userService.GetUser(User.Identity.GetUserId()));
+            var user = await userService.GetUser(User.Identity.GetUserId());
+            eventDto.Organizer = user;
+            eventDto.Participants = new List<UserDto> {user};
             await eventService.AddEvent(eventDto);
-            return RedirectToRoute("");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
