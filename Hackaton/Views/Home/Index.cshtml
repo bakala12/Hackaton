@@ -31,6 +31,7 @@
     <![endif]-->
 </head>
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    <!-- <bgsound src="~Songs/background_song_lel.mp3" loop="0" balance="0" volume="50"> -->
     <!-- Navigation -->
     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container">
@@ -105,7 +106,8 @@
     <!-- Map Section -->
         <div id="googleMap" style="width: 100%;"></div>
     <!-- Profil Section -->
-    @if (User.Identity.IsAuthenticated){
+            @if (User.Identity.IsAuthenticated)
+            {
         <section id="profil" class="content-section text-center">
             <div class="download-section">
                 <div class="container">
@@ -113,18 +115,13 @@
                     <div class="col-lg-8 col-lg-offset-2">
                         <h2>Twój profil</h2>
                         <img class="avatar" src="~/Images/user.png" alt="avatar" /> <!-- dodac ladowanie zdjęcia -->
-                        <br/>
+                                <br />
                         <p>@User.Identity.Name</p> 
-                        <br/>
+                                <br />
                         <a style="color:#00B200;" class="h3" href="/Events/ForUser">Lista Twoich eventów</a>
                         <br />
                         <br />
                         @Html.ActionLink("Zmień hasło", "ChangePassword", "Manage", routeValues: null, htmlAttributes: new { id = "registerLink" })
-                        @Html.ActionLink("Zmień hasło", "ChangePassword", "Manage", routeValues: null, htmlAttributes: new { id = "registerLink" })
-                        
-                        
-
-
                     </div>
                 </div>
             </div>
@@ -134,7 +131,7 @@
         <!-- Footer -->
         <footer>
             <div class="container text-center">
-                <p>Copyright &copy; Mateusz Augustyniak, Mateusz Bąkała, Anna Bujak, <br/>Paweł Duszak, Sławomir Fajer, Jan Kierzkowski 2016</p>
+                    <p>Copyright &copy; Mateusz Augustyniak, Mateusz Bąkała, Anna Bujak, <br />Paweł Duszak, Sławomir Fajer, Jan Kierzkowski 2016</p>
         </div>
     </footer>
     <!-- jQuery -->

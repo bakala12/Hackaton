@@ -16,5 +16,6 @@ namespace Shared.Dtos
         public int Height { get; set; }
         public double Weight { get; set; }
         public AdvanceLevel AdvanceLevel { get; set; }
+        public List<EventDto> EventList { get; set; } // augi kazał lel
     }
 }
