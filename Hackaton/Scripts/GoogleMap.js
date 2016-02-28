@@ -68,11 +68,11 @@ function displayTrees(map, bounds) {
                     if (this.content.IsEvent) {
                         contentString = '<div id="content">' +
                             this.content.EventDate +
-                            '<button id="contentCloudJoin">tralalalala</button>' +
+                            '<button id="contentCloudJoin">Dołącz do wydarzenia</button>' +
                             '</div>';
                         eventToCreate = false;
                     } else {
-                        contentString = '<div id="content">' + '<button id="contentCloudCreate">bebebebe</button>' + '</div>';
+                        contentString = '<div id="content">' + '<button id="contentCloudCreate">Utwórz wydarzenie</button>' + '</div>';
                         eventToCreate = true;
                     }
 
@@ -101,7 +101,8 @@ function displayTrees(map, bounds) {
                         });
                     } else {                   
                         $('#contentCloudJoin').click(function joinEvent() {
-                            $.post('Events/Join', { 'treeId': self.content.Id }, function() {}, 'json');
+                            $.post('Events/Join', { 'treeId': self.content.Id }, function () { }, 'json');
+                            window.location.replace(location.origin);
                         });
                     }
                 });

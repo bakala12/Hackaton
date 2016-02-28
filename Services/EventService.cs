@@ -62,6 +62,7 @@ namespace Services
         {
             var @event = await context.Events.FirstAsync(e => e.Tree.Id == treeId);
             @event.Participants.Add(await context.Users.FirstAsync(u => u.ApplicationUserId == getUserId));
+            await context.SaveChangesAsync();
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
     }
