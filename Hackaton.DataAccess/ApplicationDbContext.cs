@@ -14,17 +14,30 @@ namespace Hackaton.DataAccess
         public virtual DbSet<Event> Events { get; set; }
         public virtual DbSet<Tree> Trees { get; set; }
         public virtual DbSet<UserImage> UserImages { get; set; }
-        public virtual DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public virtual DbSet<User> Users { get; set; }
 
         public ApplicationDbContext() : base("HackatonDbCtx")
         {
-                
+
         }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<Hackaton.DataAccess.Entities.User> IdentityUsers { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<User>().
+                HasMany(u => u.EventList).
+                WithMany(e => e.Participants).
+                Map(ue =>
+                {
+                    ue.MapLeftKey("UserId");
+                    ue.MapRightKey("EventId");
+                    ue.ToTable("UsersEvents");
+                });
+        }
+
     }
 }

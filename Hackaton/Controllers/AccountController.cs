@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Hackaton.Models;
+using Services;
+// ReSharper disable InconsistentNaming
 
 namespace Hackaton.Controllers
 {
@@ -17,6 +19,7 @@ namespace Hackaton.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private readonly UserService userService = new UserService();
 
         public AccountController()
         {
@@ -161,6 +164,7 @@ namespace Hackaton.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
+                    userService.RegisterUser(user.Id, model.FirstName, model.LastName);
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);

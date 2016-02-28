@@ -24,8 +24,9 @@ namespace Services
 
         public async Task<List<EventDto>> GetEventsDtoListForUser(string userId)
         {
-            var userEvents = await context.Events.Where(e => e.Participants.Any(u => u.Id == userId)).ToListAsync();
-            return AutoMapper.Instance.Map<List<Event>, List<EventDto>>(userEvents);
+            //var userEvents = await context.Events.Where(e => e.Participants.Any(u => u.Id == userId)).ToListAsync();
+            //return AutoMapper.Instance.Map<List<Event>, List<EventDto>>(userEvents);
+            throw new NotImplementedException();
         }
 
         public async Task<ActionResult> AddEvent(EventDto eventDto)
@@ -37,7 +38,7 @@ namespace Services
                 await context.SaveChangesAsync();
                 return new HttpStatusCodeResult(HttpStatusCode.OK);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }

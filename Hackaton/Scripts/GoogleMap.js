@@ -52,15 +52,20 @@ function displayTrees(map, bounds) {
                 }
                 markers.push(marker);
                 marker.setMap(map);
-                var treeId = results[i].Id;
+                marker.content = results[i].IsEvent;
+                treeId = results[i].Id;
                 google.maps.event.addListener(marker, 'click', function () {
                     if (selectedMarker) {
-                        selectedMarker.setIcon('../Images/tree_green.png');
+                        if (selectedMarker.content) {
+                            selectedMarker.setIcon('../Images/tree_red.png');
+                        } else {
+                            selectedMarker.setIcon('../Images/tree_green.png');
+                        }
                     }
                     this.setIcon('../Images/tree_blue.png');
                     selectedMarker = this;
                     var contentString;
-                    if (IsTreeAvailable(treeId) === true) {
+                    if (this.content) {
                         contentString = '<div id="content">' + '<button id="contentCloud">tralalalala</button>' + '</div>';
                     } else {
                         contentString = '<div id="content">' + '<button id="contentCloud">bebebebe</button>' + '</div>';
@@ -75,7 +80,8 @@ function displayTrees(map, bounds) {
 
                     infowindow.open(map, this);
                     $('#contentCloud').click(function createEvent() {
-                        window.location.replace(location.origin + "/Events/CreatePageNearTree/" + treeId);
+                       // window.location.replace(location.origin + "/Events/CreatePageNearTree/" + treeId);
+                        window.location.replace(location.origin + "/Events/CreatePageNearTree/" + this.content.Id);
                         //$.post('Events/Create', { 'treeId': treeId }, function () { }, 'json');
                         //$.ajax({
                         //    url: 'Events/Create',
@@ -102,22 +108,4 @@ function hideMarkers() {
         markers[i].setMap(null);
     }
     markers = [];
-}
-
-function IsTreeAvailable(treeId) {
-    $.ajax({
-        url: "Events/IsEventInTree",
-        type: "POST",
-        dataType: "json",
-        cache: false,
-        data: {
-            'treeId': treeId
-        },
-        success: function (result) {
-            return result;
-        },
-        error: function () {
-            alert("Error occured");
-        }
-    });
 }
