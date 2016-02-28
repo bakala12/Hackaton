@@ -1,7 +1,7 @@
 ﻿@model Shared.Dtos.EventDto
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Utwórz";
 }
 
 <!-- Intro Header -->
@@ -11,8 +11,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h1 class="brand-heading">Zmień swoje hasło</h1>
-                    <p class="intro-text">Poniżej znajdziesz możliwość edycji swojego hasła i profilu<br>i biegnijmy razem</p>
+                    <h1 class="brand-heading">Dodaj wydarzenie</h1>
+                    <p class="intro-text">Dodaj wydarzenie przy wybranym drzewie</p>
                     <a href="#passwordChange" class="btn btn-circle page-scroll">
                         <i class="fa fa-angle-double-down animated"></i>
                     </a>
@@ -26,13 +26,13 @@
     <div id="ChangePasswordPanel">
         <div id="centerPasswordPanel">
 
-            <h2>@ViewBag.Title.</h2>
+            <h2>@ViewBag.Title</h2>
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
 
                 <div class="form-horizontal">
-                    <h4>Event</h4>
+                    <h4>Wydarzenie</h4>
                     <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
@@ -69,14 +69,14 @@
 
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Create" class="btn btn-default" />
+                            <input type="submit" value="Utwórz" class="btn btn-default" />
                         </div>
                     </div>
                 </div>
             }
 
             <div>
-                @Html.ActionLink("Back to List", "Index")
+                @Html.ActionLink("Powrót", "Index", "Home")
             </div>
 
         </div>
