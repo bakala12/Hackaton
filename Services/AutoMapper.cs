@@ -26,7 +26,7 @@ namespace Services
                         cfg.CreateMap<UserDto, User>();
                         cfg.CreateMap<Event, EventDto>();
                         cfg.CreateMap<EventDto, Event>();
-                        cfg.CreateMap<TreeDto, TreeDto>();
+                        cfg.CreateMap<TreeDto, Tree>();
                         cfg.CreateMap<Tree, TreeDto>();
                     });
                     instance = config.CreateMapper();
