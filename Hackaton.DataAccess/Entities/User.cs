@@ -19,6 +19,7 @@ namespace Hackaton.DataAccess.Entities
         public AdvanceLevel AdvanceLevel { get; set; }
         public virtual UserImage Image { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
+        public virtual List<Event> EventList { get; set; }
 
     }
 }
