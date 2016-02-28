@@ -35,17 +35,17 @@ namespace Hackaton.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateDSFD(EventDto eventDto)
+        public async Task<ActionResult> CreatePageNearTree(EventDto eventDto)
         {
             await eventService.AddEvent(eventDto);
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
-        public async Task<ActionResult> Create(int treeId)
+        [HttpGet]
+        public async Task<ActionResult> CreatePageNearTree(int id)
         {
             var eventDto = new EventDto();
-            eventDto.Tree = await treeService.GetTree(treeId);
+            eventDto.Tree = await treeService.GetTree(id);
             return View(eventDto);
         }
     }

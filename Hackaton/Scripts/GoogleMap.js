@@ -69,15 +69,17 @@ function displayTrees(map, bounds) {
 
                     infowindow.open(map, this);
                     $('#contentCloud').click(function createEvent() {
-                        $.ajax({
-                            url: 'Events/Create',
-                            type: 'POST',
-                            dataType: 'json',
-                            cache: false,
-                            data: {
-                                'treeId': treeId
-                            }
-                        });
+                        window.location.replace(location.origin + "/Events/CreatePageNearTree/" + treeId);
+                        //$.post('Events/Create', { 'treeId': treeId }, function () { }, 'json');
+                        //$.ajax({
+                        //    url: 'Events/Create',
+                        //    type: 'POST',
+                        //    dataType: 'json',
+                        //    cache: false,
+                        //    data: {
+                        //        'treeId': treeId
+                        //    }
+                        //});
                     });
                 });
             }

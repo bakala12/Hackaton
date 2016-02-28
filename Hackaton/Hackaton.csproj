@@ -263,6 +263,7 @@
     <Content Include="Scripts\SkryptJanusza.js" />
     <Content Include="Scripts\sryptyAni.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Songs\background_song_lel.mp3" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -296,7 +297,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Events\Create.cshtml" />
+    <Content Include="Views\Events\CreatePageNearTree.cshtml" />
     <Content Include="Views\Events\Delete.cshtml" />
     <Content Include="Views\Events\Details.cshtml" />
     <Content Include="Views\Events\Edit.cshtml" />
