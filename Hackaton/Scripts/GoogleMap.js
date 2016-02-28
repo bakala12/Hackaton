@@ -52,15 +52,19 @@ function displayTrees(map, bounds) {
                 }
                 markers.push(marker);
                 marker.setMap(map);
-                var treeId = results[i].Id;
+                marker.content = results[i].IsEvent;
                 google.maps.event.addListener(marker, 'click', function () {
                     if (selectedMarker) {
-                        selectedMarker.setIcon('../Images/tree_green.png');
+                        if (selectedMarker.content) {
+                            selectedMarker.setIcon('../Images/tree_red.png');
+                        } else {
+                            selectedMarker.setIcon('../Images/tree_green.png');
+                        }
                     }
                     this.setIcon('../Images/tree_blue.png');
                     selectedMarker = this;
                     var contentString;
-                    if (IsTreeAvailable(treeId) === true) {
+                    if (this.content) {
                         contentString = '<div id="content">' + '<button id="contentCloud">tralalalala</button>' + '</div>';
                     } else {
                         contentString = '<div id="content">' + '<button id="contentCloud">bebebebe</button>' + '</div>';
@@ -102,22 +106,4 @@ function hideMarkers() {
         markers[i].setMap(null);
     }
     markers = [];
-}
-
-function IsTreeAvailable(treeId) {
-    $.ajax({
-        url: "Events/IsEventInTree",
-        type: "POST",
-        dataType: "json",
-        cache: false,
-        data: {
-            'treeId': treeId
-        },
-        success: function (result) {
-            return result;
-        },
-        error: function () {
-            alert("Error occured");
-        }
-    });
 }
