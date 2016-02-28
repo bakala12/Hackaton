@@ -52,11 +52,10 @@ function displayTrees(map, bounds) {
                 }
                 markers.push(marker);
                 marker.setMap(map);
-                marker.content = results[i].IsEvent;
-                treeId = results[i].Id;
+                marker.content = results[i];
                 google.maps.event.addListener(marker, 'click', function () {
                     if (selectedMarker) {
-                        if (selectedMarker.content) {
+                        if (selectedMarker.content.IsEvent) {
                             selectedMarker.setIcon('../Images/tree_red.png');
                         } else {
                             selectedMarker.setIcon('../Images/tree_green.png');
@@ -65,8 +64,11 @@ function displayTrees(map, bounds) {
                     this.setIcon('../Images/tree_blue.png');
                     selectedMarker = this;
                     var contentString;
-                    if (this.content) {
-                        contentString = '<div id="content">' + '<button id="contentCloud">tralalalala</button>' + '</div>';
+                    if (this.content.IsEvent) {
+                        contentString = '<div id="content">' +
+                            this.content.EventDate +
+                            '<button id="contentCloud">tralalalala</button>' +
+                            '</div>';
                     } else {
                         contentString = '<div id="content">' + '<button id="contentCloud">bebebebe</button>' + '</div>';
                     }
@@ -80,8 +82,7 @@ function displayTrees(map, bounds) {
 
                     infowindow.open(map, this);
                     $('#contentCloud').click(function createEvent() {
-                       // window.location.replace(location.origin + "/Events/CreatePageNearTree/" + treeId);
-                        window.location.replace(location.origin + "/Events/CreatePageNearTree/" + this.content.Id);
+                        window.location.replace(location.origin + "/Events/CreatePageNearTree/" + treeId);
                         //$.post('Events/Create', { 'treeId': treeId }, function () { }, 'json');
                         //$.ajax({
                         //    url: 'Events/Create',
