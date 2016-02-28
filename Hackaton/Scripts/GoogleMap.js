@@ -64,13 +64,16 @@ function displayTrees(map, bounds) {
                     this.setIcon('../Images/tree_blue.png');
                     selectedMarker = this;
                     var contentString;
+                    var eventToCreate;
                     if (this.content.IsEvent) {
                         contentString = '<div id="content">' +
                             this.content.EventDate +
-                            '<button id="contentCloud">tralalalala</button>' +
+                            '<button id="contentCloudJoin">Dołącz do wydarzenia</button>' +
                             '</div>';
+                        eventToCreate = false;
                     } else {
-                        contentString = '<div id="content">' + '<button id="contentCloud">bebebebe</button>' + '</div>';
+                        contentString = '<div id="content">' + '<button id="contentCloudCreate">Utwórz wydarzenie</button>' + '</div>';
+                        eventToCreate = true;
                     }
 
                     if (infowindow) {
@@ -82,19 +85,26 @@ function displayTrees(map, bounds) {
                     var self = this;
 
                     infowindow.open(map, this);
-                    $('#contentCloud').click(function createEvent() {
-                        window.location.replace(location.origin + "/Events/CreatePageNearTree/" + self.content.Id);
-                        //$.post('Events/Create', { 'treeId': treeId }, function () { }, 'json');
-                        //$.ajax({
-                        //    url: 'Events/Create',
-                        //    type: 'POST',
-                        //    dataType: 'json',
-                        //    cache: false,
-                        //    data: {
-                        //        'treeId': treeId
-                        //    }
-                        //});
-                    });
+                    if (eventToCreate) {
+                        $('#contentCloudCreate').click(function createEvent() {
+                            window.location.replace(location.origin + "/Events/CreatePageNearTree/" + self.content.Id);
+                            //$.post('Events/Create', { 'treeId': treeId }, function () { }, 'json');
+                            //$.ajax({
+                            //    url: 'Events/Create',
+                            //    type: 'POST',
+                            //    dataType: 'json',
+                            //    cache: false,
+                            //    data: {
+                            //        'treeId': treeId
+                            //    }
+                            //});
+                        });
+                    } else {                   
+                        $('#contentCloudJoin').click(function joinEvent() {
+                            $.post('Events/Join', { 'treeId': self.content.Id }, function () { }, 'json');
+                            window.location.replace(location.origin);
+                        });
+                    }
                 });
             }
         },

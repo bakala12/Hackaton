@@ -63,5 +63,11 @@ namespace Hackaton.Controllers
             var result= treeService.IsEventInTree(treeId);
             return result;
         }
+
+        [HttpPost]
+        public async Task<ActionResult> Join(int treeId)
+        {
+            return await eventService.JoinEvent(User.Identity.GetUserId(), treeId);
+        }
     }
 }
