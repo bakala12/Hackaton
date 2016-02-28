@@ -85,6 +85,22 @@
                                                     <span>@ev.Date</span>
                                                     <span>@ev.Description</span>
                                                     <span>@ev.Organizer</span>
+                                                    <div id="participants+@ev.Id">
+                                                        <ul>
+                                                            @{
+                                                                if (ev.Participants?.Count > 0)
+                                                                {
+                                                                    foreach (var participant in ev.Participants)
+                                                                    {
+                                                                        <li>
+                                                                            <div>@Html.Label(participant.Name);</div>
+                                                                            <div>@Html.Label(participant.Surname);</div>
+                                                                        </li>
+                                                                    }
+                                                                }
+                                                            }
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </td>
                                         </tr>
