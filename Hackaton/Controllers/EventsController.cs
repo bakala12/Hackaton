@@ -38,7 +38,7 @@ namespace Hackaton.Controllers
         public async Task<ActionResult> CreatePageNearTree(EventDto eventDto)
         {
             await eventService.AddEvent(eventDto);
-            return RedirectToAction("Index");
+            return RedirectToRoute("");
         }
 
         [HttpGet]
