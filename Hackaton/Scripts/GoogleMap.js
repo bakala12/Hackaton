@@ -67,7 +67,7 @@ function displayTrees(map, bounds) {
                     var eventToCreate;
                     if (this.content.IsEvent) {
                         contentString = '<div id="content">' +
-                            this.content.EventDate +
+                            this.content.EventDate +'<br/>'+
                             '<button id="contentCloudJoin">Dołącz do wydarzenia</button>' +
                             '</div>';
                         eventToCreate = false;
