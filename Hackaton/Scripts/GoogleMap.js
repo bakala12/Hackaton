@@ -80,7 +80,8 @@ function displayTrees(map, bounds) {
 
                     infowindow.open(map, this);
                     $('#contentCloud').click(function createEvent() {
-                        window.location.replace(location.origin + "/Events/CreatePageNearTree/" + treeId);
+                       // window.location.replace(location.origin + "/Events/CreatePageNearTree/" + treeId);
+                        window.location.replace(location.origin + "/Events/CreatePageNearTree/" + this.content.Id);
                         //$.post('Events/Create', { 'treeId': treeId }, function () { }, 'json');
                         //$.ajax({
                         //    url: 'Events/Create',

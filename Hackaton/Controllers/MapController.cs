@@ -12,12 +12,14 @@ namespace Hackaton.Controllers
     {
         private const int treesCount = 50;
 
-        private class MyTree
+        private class EventTree
         {
+            public bool IsAuthenticated { get; set; }
             public int Id { get; set; }
             public double CoordX { get; set; }
             public double CoordY { get; set; }
             public bool IsEvent { get; set; }
+            public string EventDate { get; set; }
 
         }
 
@@ -25,7 +27,7 @@ namespace Hackaton.Controllers
         {
             using (ApplicationDbContext ctx = new ApplicationDbContext())
             {
-                List<MyTree> ret = new List<MyTree>();
+                List<EventTree> ret = new List<EventTree>();
 
                 int c = ctx.Trees.Count(t =>
                     t.CoordX > southWestX && t.CoordX < northEastX &&
@@ -33,16 +35,17 @@ namespace Hackaton.Controllers
 
                 var checkedTrees = ctx.Events.Select(e => e.Tree).Where(t =>
                     t.CoordX > southWestX && t.CoordX < northEastX &&
-                    t.CoordY < northEastY && t.CoordY > southWestY).Take(treesCount);
-
+                    t.CoordY < northEastY && t.CoordY > southWestY).Take(treesCount).ToList();
                 foreach (var v in checkedTrees)
                 {
-                    ret.Add(new MyTree()
+                    ret.Add(new EventTree()
                     {
+                        IsAuthenticated = User.Identity.IsAuthenticated,
                         Id = v.Id,
                         CoordX = v.CoordX,
                         CoordY = v.CoordY,
-                        IsEvent = true
+                        IsEvent = true,
+                        EventDate = ctx.Events.First(e => e.Tree.Id == v.Id).Date.ToString()
                     });
                 }
 
@@ -57,8 +60,9 @@ namespace Hackaton.Controllers
 
                     foreach (var v in trees)
                     {
-                        ret.Add(new MyTree()
+                        ret.Add(new EventTree()
                         {
+                            IsAuthenticated = User.Identity.IsAuthenticated,
                             Id = v.Id,
                             CoordX = v.CoordX,
                             CoordY = v.CoordY,
