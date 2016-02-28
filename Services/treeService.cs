@@ -19,5 +19,10 @@ namespace Services
         {
             return AutoMapper.Instance.Map<Tree, TreeDto>(await context.Trees.FirstAsync(t => t.Id == treeId));
         }
+
+        public bool IsTreeAvailable(int treeId)
+        {
+            return context.Events.Count(e => e.Tree.Id == treeId)==0;
+        }
     }
 }
