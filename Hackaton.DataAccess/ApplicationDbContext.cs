@@ -18,11 +18,25 @@ namespace Hackaton.DataAccess
 
         public ApplicationDbContext() : base("HackatonDbCtx")
         {
-                
+
         }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<User>().
+                HasMany(u => u.EventList).
+                WithMany(e => e.Participants).
+                Map(ue =>
+                {
+                    ue.MapLeftKey("UserId");
+                    ue.MapRightKey("EventId");
+                    ue.ToTable("UsersEvents");
+                });
         }
 
         public System.Data.Entity.DbSet<Hackaton.DataAccess.Entities.User> IdentityUsers { get; set; }
