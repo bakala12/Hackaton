@@ -234,6 +234,7 @@
     <Content Include="Images\buty.jpg" />
     <Content Include="Images\chopin.jpg" />
     <Content Include="Images\palac.jpg" />
+    <Content Include="Images\runnerBackground.jpg" />
     <Content Include="Images\tree_blue.png" />
     <Content Include="Images\tree_green.png" />
     <Content Include="Images\tree_red.png" />
@@ -246,8 +247,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\Thumbs.db" />
-    <None Include="Properties\PublishProfiles\przydrzewie - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\foruserhoverscript.js" />
     <Content Include="Scripts\GoogleMap.js" />

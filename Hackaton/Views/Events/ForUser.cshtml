@@ -6,126 +6,158 @@
 }
 
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Director | Dashboard</title>
-    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <meta name="description" content="Developed By M Abdur Rokib Promy">
-    <meta name="keywords" content="Admin, Bootstrap 3, Template, Theme, Responsive">
-    <!-- bootstrap 3.0.2 -->
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <!-- font Awesome -->
-    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <!-- Ionicons -->
-    <link href="css/ionicons.min.css" rel="stylesheet" type="text/css" />
-    <!-- Morris chart -->
-    <link href="css/morris/morris.css" rel="stylesheet" type="text/css" />
-    <!-- jvectormap -->
-    <link href="css/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
-    <!-- Date Picker -->
-    <link href="css/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
-    <!-- fullCalendar -->
-    <!-- <link href="css/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css" /> -->
-    <!-- Daterange picker -->
-    <link href="css/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
-    <!-- iCheck for checkboxes and radio inputs -->
-    <link href="css/iCheck/all.css" rel="stylesheet" type="text/css" />
-    <!-- bootstrap wysihtml5 - text editor -->
-    <!-- <link href="css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" /> -->
-    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-    <!-- Theme style -->
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-
-    <link href="../../Content/Foruserhoverstyle.css" rel="stylesheet" type="text/css"/>
-
-
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Grayscale - Start Bootstrap Theme</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Content/bootstrap.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="~/Content/grayscale.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <!-- <link href="~/Content/font-awesome.css" stylesheet" rel="stylesheet" type="text/css"> -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-      <![endif]-->
-
-    <style type="text/css">
-    </style>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <img height="100" src="~/Images/biegacz.png" alt="biegacz" />
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <img height="30" src="~/Images/biegacz.png" alt="biegacz" />  <span class="light">Przy drzewie</span>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
 
-<body>
-    <div>
-        <div style="width:50%;margin:0 auto; background-color:lightslategray;">
-            <div class="row">
+            <!-- /.container -->
+        </nav>
+        <!-- Intro Header -->
+        <!-- Intro Header -->
+        <header class="introEvents">
+            <div class="intro-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h1 class="brand-heading">Przy drzewie</h1>
+                            <p class="intro-text">Znajdź znajomego przy pobliskim drzewie<br>i biegnijmy razem</p>
+                            <a href="#allevents" class="btn btn-circle page-scroll">
+                                <i class="fa fa-angle-double-down animated"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Events Section -->
+    <section id="allevents">
+        <div>
+            <div style="height:100vh;width:50%;margin:0 auto; background-color:lightslategray;">
+                <div class="row">
 
-                <div class="col-md-8" style="margin:0 auto;">
-                    <section class="panel">
-                        <header class="panel-heading">
-                            Work Progress
-                        </header>
-                        <div class="panel-body table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Nazwa</th>
-                                        <th>Data</th>
-                                        <!-- <th>Client</th> -->
-                                        <th>Opis</th>
-                                        <th>Organizator</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (Shared.Dtos.EventDto ev in Model)
-                                    {
+                    <div class="col-md-8" style="margin:0 auto;">
+                        <section class="panel">
+                            <header class="panel-heading">
+                                Work Progress
+                            </header>
+                            <div class="panel-body table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
                                         <tr>
-                                            <td>
-                                                <div class="tabledivclass" id="@ev.Id">
-                                                    <span>@ev.Name</span>
-                                                    <span>@ev.Date</span>
-                                                    <span>@ev.Description</span>
-                                                    <span>@ev.Organizer</span>
-                                                    <div id="participants+@ev.Id" class="invisible-participants">
-                                                        <ul>
-                                                            @{
-                                                                if (ev.Participants?.Count > 0)
-                                                                {
-                                                                    foreach (var participant in ev.Participants)
+                                            <th>Nazwa</th>
+                                            <th>Data</th>
+                                            <!-- <th>Client</th> -->
+                                            <th>Opis</th>
+                                            <th>Organizator</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (Shared.Dtos.EventDto ev in Model)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <div class="tabledivclass" id="@ev.Id">
+                                                        <span>@ev.Name</span>
+                                                        <span>@ev.Date</span>
+                                                        <span>@ev.Description</span>
+                                                        <span>@ev.Organizer</span>
+                                                        <div id="participants+@ev.Id" class="invisible-participants">
+                                                            <ul>
+                                                                @{
+                                                                    if (ev.Participants?.Count > 0)
                                                                     {
-                                                                        <li>
-                                                                            <div>@Html.Label(participant.Name);</div>
-                                                                            <div>@Html.Label(participant.Surname);</div>
-                                                                        </li>
+                                                                        foreach (var participant in ev.Participants)
+                                                                        {
+                                                                            <li>
+                                                                                <div>@Html.Label(participant.Name);</div>
+                                                                                <div>@Html.Label(participant.Surname);</div>
+                                                                            </li>
+                                                                        }
                                                                     }
                                                                 }
-                                                            }
-                                                        </ul>
+                                                            </ul>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
-                    </section>
+                                                </td>
+                                            </tr>
+                                                                    }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
 
 
-                </div><!--end col-6 -->
+                    </div><!--end col-6 -->
+                </div>
             </div>
         </div>
-    </div>
-    <!-- jQuery -->
-    <script src="~/Scripts/jquery-1.10.2.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <!-- Plugin JavaScript -->
-    <script src="~/Scripts/jquery.easing.min.js"></script>
+    </section>
+        <!-- jQuery -->
+        <!-- Footer -->
+        <footer>
+            <div class="container text-center">
+                <p>Copyright &copy; Mateusz Augustyniak, Mateusz Bąkała, Anna Bujak, <br />Paweł Duszak, Sławomir Fajer, Jan Kierzkowski 2016</p>
+            </div>
+        </footer>
+        <!-- jQuery -->
+        <script src="~/Scripts/jquery-1.10.2.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <!-- Plugin JavaScript -->
+        <script src="~/Scripts/jquery.easing.min.js"></script>
 
-    <!-- Google maps-->
-    <script src="http://maps.googleapis.com/maps/api/js"></script>
-    <script src="../../Scripts/GoogleMap.js"></script>
-    <!-- Custom Theme JavaScript -->
-    <script src="~/Scripts/grayscale.js"></script>
-    <script src="~/Scripts/sryptyAni.js"></script>
-    <script src="~/Scripts/SkryptJanusza.js"></script>
-</body>
+        <!-- Google maps-->
+        <script src="http://maps.googleapis.com/maps/api/js"></script>
+        <script src="../../Scripts/GoogleMap.js"></script>
+        <!-- Custom Theme JavaScript -->
+        <script src="~/Scripts/grayscale.js"></script>
+        <script src="~/Scripts/sryptyAni.js"></script>
+        <script src="~/Scripts/SkryptJanusza.js"></script>
+
+    </body>
 </html>
