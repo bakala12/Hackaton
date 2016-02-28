@@ -52,15 +52,19 @@ function displayTrees(map, bounds) {
                 }
                 markers.push(marker);
                 marker.setMap(map);
-                var currentTreeIsEvent = results[i].IsEvent;
+                marker.content = results[i].IsEvent;
                 google.maps.event.addListener(marker, 'click', function () {
                     if (selectedMarker) {
-                        selectedMarker.setIcon('../Images/tree_green.png');
+                        if (selectedMarker.content) {
+                            selectedMarker.setIcon('../Images/tree_red.png');
+                        } else {
+                            selectedMarker.setIcon('../Images/tree_green.png');
+                        }
                     }
                     this.setIcon('../Images/tree_blue.png');
                     selectedMarker = this;
                     var contentString;
-                    if (currentTreeIsEvent) {
+                    if (this.content) {
                         contentString = '<div id="content">' + '<button id="contentCloud">tralalalala</button>' + '</div>';
                     } else {
                         contentString = '<div id="content">' + '<button id="contentCloud">bebebebe</button>' + '</div>';
