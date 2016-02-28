@@ -57,5 +57,12 @@ namespace Services
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
         }
+
+        public async Task<ActionResult> JoinEvent(string getUserId, int treeId)
+        {
+            var @event = await context.Events.FirstAsync(e => e.Tree.Id == treeId);
+            @event.Participants.Add(await context.Users.FirstAsync(u => u.ApplicationUserId == getUserId));
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
     }
 }
