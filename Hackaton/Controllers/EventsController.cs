@@ -20,6 +20,7 @@ namespace Hackaton.Controllers
     public class EventsController : Controller
     {
         private readonly EventService eventService = new EventService();
+        private readonly TreeService treeService = new TreeService();
         
 
         // GET: Events
@@ -33,11 +34,26 @@ namespace Hackaton.Controllers
             return View(await eventService.GetEventsDtoListForUser(User.Identity.GetUserId()));
         }
 
-        [HttpGet]
-        public async Task<ActionResult> Create(EventDto eventDto)
+        [HttpPost]
+        public async Task<ActionResult> CreatePageNearTree(EventDto eventDto)
         {
             await eventService.AddEvent(eventDto);
-            return RedirectToAction("Index");
+            return RedirectToRoute("");
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> CreatePageNearTree(int id)
+        {
+            var eventDto = new EventDto();
+            eventDto.Tree = await treeService.GetTree(id);
+            return View(eventDto);
+        }
+
+        [HttpPost]
+        public bool IsEventInTree(int treeId)
+        {
+            var result= treeService.IsEventInTree(treeId);
+            return result;
         }
     }
 }
