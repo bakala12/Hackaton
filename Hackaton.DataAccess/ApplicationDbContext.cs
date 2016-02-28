@@ -14,6 +14,7 @@ namespace Hackaton.DataAccess
         public virtual DbSet<Event> Events { get; set; }
         public virtual DbSet<Tree> Trees { get; set; }
         public virtual DbSet<UserImage> UserImages { get; set; }
+        public DbSet<User> IdentityUsers { get; set; }
         public virtual DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
         public ApplicationDbContext() : base("HackatonDbCtx")
@@ -25,6 +26,5 @@ namespace Hackaton.DataAccess
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<Hackaton.DataAccess.Entities.User> IdentityUsers { get; set; }
     }
 }
