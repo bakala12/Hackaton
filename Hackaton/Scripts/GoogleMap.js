@@ -37,7 +37,8 @@ function displayTrees(map, bounds) {
             'southWestX': southWest.lng(),
             'southWestY': southWest.lat(),
             'northEastX': northEast.lng(),
-            'northEastY': northEast.lat()
+            'northEastY': northEast.lat(),
+            'zoom': map.getZoom()
         },
         success: function (results) {
             hideMarkers();
@@ -46,17 +47,24 @@ function displayTrees(map, bounds) {
                     position: { lat: results[i].CoordY, lng: results[i].CoordX },
                     icon: '../Images/tree_green.png'
                 });
+                if (results[i].IsEvent) {
+                    marker.setIcon('../Images/tree_red.png');
+                }
                 markers.push(marker);
                 marker.setMap(map);
-
+                var treeId = results[i].Id;
                 google.maps.event.addListener(marker, 'click', function () {
                     if (selectedMarker) {
                         selectedMarker.setIcon('../Images/tree_green.png');
                     }
                     this.setIcon('../Images/tree_blue.png');
                     selectedMarker = this;
-
-                    var contentString = '<div id="content">' + "tralalalala" + '</div>';
+                    var contentString;
+                    if (IsTreeAvailable(treeId) === true) {
+                        contentString = '<div id="content">' + '<button id="contentCloud">tralalalala</button>' + '</div>';
+                    } else {
+                        contentString = '<div id="content">' + '<button id="contentCloud">bebebebe</button>' + '</div>';
+                    }
 
                     if (infowindow) {
                         infowindow.close();
@@ -66,13 +74,21 @@ function displayTrees(map, bounds) {
                     });
 
                     infowindow.open(map, this);
+                    $('#contentCloud').click(function createEvent() {
+                        window.location.replace(location.origin + "/Events/CreatePageNearTree/" + treeId);
+                        //$.post('Events/Create', { 'treeId': treeId }, function () { }, 'json');
+                        //$.ajax({
+                        //    url: 'Events/Create',
+                        //    type: 'POST',
+                        //    dataType: 'json',
+                        //    cache: false,
+                        //    data: {
+                        //        'treeId': treeId
+                        //    }
+                        //});
+                    });
                 });
-
-
-
-           
             }
-
         },
         error: function () {
             alert('Error occured');
@@ -86,4 +102,22 @@ function hideMarkers() {
         markers[i].setMap(null);
     }
     markers = [];
+}
+
+function IsTreeAvailable(treeId) {
+    $.ajax({
+        url: "Events/IsEventInTree",
+        type: "POST",
+        dataType: "json",
+        cache: false,
+        data: {
+            'treeId': treeId
+        },
+        success: function (result) {
+            return result;
+        },
+        error: function () {
+            alert("Error occured");
+        }
+    });
 }
