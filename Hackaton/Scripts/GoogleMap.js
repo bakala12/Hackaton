@@ -48,15 +48,17 @@ function displayTrees(map, bounds) {
                 });
                 markers.push(marker);
                 marker.setMap(map);
-
-                google.maps.event.addListener(marker, 'click', function () {
+                var treeId = results[i].Id;
+                google.maps.event.addListener(marker, 'click', function() {
                     if (selectedMarker) {
                         selectedMarker.setIcon('../Images/tree_green.png');
                     }
                     this.setIcon('../Images/tree_blue.png');
                     selectedMarker = this;
 
-                    var contentString = '<div id="content">' + "tralalalala" + '</div>';
+
+                    var contentString = '<div id="content">' + '<button id="contentCloud">tralalalala</button>' + '</div>';
+
 
                     if (infowindow) {
                         infowindow.close();
@@ -66,13 +68,19 @@ function displayTrees(map, bounds) {
                     });
 
                     infowindow.open(map, this);
+                    $('#contentCloud').click(function createEvent() {
+                        $.ajax({
+                            url: 'Events/Create',
+                            type: 'POST',
+                            dataType: 'json',
+                            cache: false,
+                            data: {
+                                'treeId': treeId
+                            }
+                        });
+                    });
                 });
-
-
-
-           
             }
-
         },
         error: function () {
             alert('Error occured');

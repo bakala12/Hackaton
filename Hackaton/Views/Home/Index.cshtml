@@ -49,9 +49,12 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="#profil">Profil</a>
-                    </li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>
+                            <a class="page-scroll" href="#profil">Profil</a>
+                        </li>
+                    }
                     @*<li>
                             @Html.ActionLink("Zaloguj", "Login", "Account");
                         </li>
