@@ -52,51 +52,47 @@ function displayTrees(map, bounds) {
                 }
                 markers.push(marker);
                 marker.setMap(map);
-                marker.content = results[i];
-                if (results[i].IsAuthenticated) {
-                    google.maps.event.addListener(marker, 'click', function () {
-                        if (selectedMarker) {
-                            if (selectedMarker.content.IsEvent) {
-                                selectedMarker.setIcon('../Images/tree_red.png');
-                            } else {
-                                selectedMarker.setIcon('../Images/tree_green.png');
-                            }
-                        }
-                        this.setIcon('../Images/tree_blue.png');
-                        selectedMarker = this;
-                        var contentString;
-                        if (this.content.IsEvent) {
-                            contentString = '<div id="content">' +
-                                this.content.EventDate +
-                                '<button id="contentCloud">tralalalala</button>' +
-                                '</div>';
+                marker.content = results[i].IsEvent;
+                google.maps.event.addListener(marker, 'click', function () {
+                    if (selectedMarker) {
+                        if (selectedMarker.content) {
+                            selectedMarker.setIcon('../Images/tree_red.png');
                         } else {
-                            contentString = '<div id="content">' + '<button id="contentCloud">bebebebe</button>' + '</div>';
+                            selectedMarker.setIcon('../Images/tree_green.png');
                         }
+                    }
+                    this.setIcon('../Images/tree_blue.png');
+                    selectedMarker = this;
+                    var contentString;
+                    if (this.content) {
+                        contentString = '<div id="content">' + '<button id="contentCloud">tralalalala</button>' + '</div>';
+                    } else {
+                        contentString = '<div id="content">' + '<button id="contentCloud">bebebebe</button>' + '</div>';
+                    }
 
-                        if (infowindow) {
-                            infowindow.close();
-                        }
-                        infowindow = new google.maps.InfoWindow({
-                            content: contentString
-                        });
-
-                        infowindow.open(map, this);
-                        $('#contentCloud').click(function createEvent() {
-                            window.location.replace(location.origin + "/Events/CreatePageNearTree/" + treeId);
-                            //$.post('Events/Create', { 'treeId': treeId }, function () { }, 'json');
-                            //$.ajax({
-                            //    url: 'Events/Create',
-                            //    type: 'POST',
-                            //    dataType: 'json',
-                            //    cache: false,
-                            //    data: {
-                            //        'treeId': treeId
-                            //    }
-                            //});
-                        });
+                    if (infowindow) {
+                        infowindow.close();
+                    }
+                    infowindow = new google.maps.InfoWindow({
+                        content: contentString
                     });
-                }
+
+                    infowindow.open(map, this);
+                    $('#contentCloud').click(function createEvent() {
+                       // window.location.replace(location.origin + "/Events/CreatePageNearTree/" + treeId);
+                        window.location.replace(location.origin + "/Events/CreatePageNearTree/" + this.content.Id);
+                        //$.post('Events/Create', { 'treeId': treeId }, function () { }, 'json');
+                        //$.ajax({
+                        //    url: 'Events/Create',
+                        //    type: 'POST',
+                        //    dataType: 'json',
+                        //    cache: false,
+                        //    data: {
+                        //        'treeId': treeId
+                        //    }
+                        //});
+                    });
+                });
             }
         },
         error: function () {
