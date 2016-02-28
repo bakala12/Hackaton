@@ -30,7 +30,7 @@ namespace Hackaton.Controllers
                 int c = ctx.Trees.Count(t =>
                     t.CoordX > southWestX && t.CoordX < northEastX &&
                     t.CoordY < northEastY && t.CoordY > southWestY);
-
+                
                 var checkedTrees = ctx.Events.Select(e => e.Tree).Where(t =>
                     t.CoordX > southWestX && t.CoordX < northEastX &&
                     t.CoordY < northEastY && t.CoordY > southWestY).Take(treesCount);
@@ -49,10 +49,10 @@ namespace Hackaton.Controllers
                 if (treesCount != ret.Count)
                 {
                     int step = c / (treesCount - checkedTrees.Count());
-                    if (step == 0) step = 1;
+                if (step == 0) step = 1;
 
-                    var trees = ctx.Trees.Where(t => t.Id % step == 0 && 
-                                                     t.CoordX > southWestX && t.CoordX < northEastX &&
+                var trees = ctx.Trees.Where(t => t.Id % step == 0 &&
+                    t.CoordX > southWestX && t.CoordX < northEastX &&
                                                      t.CoordY < northEastY && t.CoordY > southWestY).ToList();
                     trees = trees.Where(t => !ret.Select(re => re.Id).Contains(t.Id)).ToList();
 
