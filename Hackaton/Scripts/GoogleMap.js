@@ -66,11 +66,11 @@ function displayTrees(map, bounds) {
                     var contentString;
                     if (this.content.IsEvent) {
                         contentString = '<div id="content">' +
-                            this.content.EventDate +
-                            '<button id="contentCloud">tralalalala</button>' +
+                            this.content.EventDate +'<br/>'+
+                            '<button id="contentCloud">Dołącz do wydarzenia!</button>' +
                             '</div>';
                     } else {
-                        contentString = '<div id="content">' + '<button id="contentCloud">bebebebe</button>' + '</div>';
+                        contentString = '<div id="content">' + '<button id="contentCloud">Utwórz wydarzenie</button>' + '</div>';
                     }
 
                     if (infowindow) {
