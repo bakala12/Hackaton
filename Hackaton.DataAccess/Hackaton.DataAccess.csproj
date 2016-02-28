@@ -63,10 +63,6 @@
     <Compile Include="Entities\Tree.cs" />
     <Compile Include="Entities\Event.cs" />
     <Compile Include="Entities\User.cs" />
-    <Compile Include="Migrations\201602281510532_dasdasd.cs" />
-    <Compile Include="Migrations\201602281510532_dasdasd.Designer.cs">
-      <DependentUpon>201602281510532_dasdasd.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201602281528076_dasdasddsadsa.cs" />
     <Compile Include="Migrations\201602281528076_dasdasddsadsa.Designer.cs">
       <DependentUpon>201602281528076_dasdasddsadsa.cs</DependentUpon>
@@ -86,9 +82,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201602281510532_dasdasd.resx">
-      <DependentUpon>201602281510532_dasdasd.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602281528076_dasdasddsadsa.resx">
       <DependentUpon>201602281528076_dasdasddsadsa.cs</DependentUpon>
     </EmbeddedResource>
