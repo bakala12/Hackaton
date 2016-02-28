@@ -46,6 +46,9 @@ function displayTrees(map, bounds) {
                     position: { lat: results[i].CoordY, lng: results[i].CoordX },
                     icon: '../Images/tree_green.png'
                 });
+                if (results[i].IsEvent) {
+                    selectedMarker.setIcon('../Images/tree_red.png');
+                }
                 markers.push(marker);
                 marker.setMap(map);
 
