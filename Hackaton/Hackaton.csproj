@@ -263,6 +263,7 @@
     <Content Include="Scripts\SkryptJanusza.js" />
     <Content Include="Scripts\sryptyAni.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Songs\background_song_lel.mp3" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
