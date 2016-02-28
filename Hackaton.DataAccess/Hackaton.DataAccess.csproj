@@ -83,6 +83,10 @@
     <Compile Include="Migrations\201602281049009_migracjadzonnego.Designer.cs">
       <DependentUpon>201602281049009_migracjadzonnego.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602281319266_RelationUserEvents.cs" />
+    <Compile Include="Migrations\201602281319266_RelationUserEvents.Designer.cs">
+      <DependentUpon>201602281319266_RelationUserEvents.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\UserImage.cs" />
@@ -106,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602281049009_migracjadzonnego.resx">
       <DependentUpon>201602281049009_migracjadzonnego.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602281319266_RelationUserEvents.resx">
+      <DependentUpon>201602281319266_RelationUserEvents.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
