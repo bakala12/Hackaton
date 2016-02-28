@@ -19,12 +19,23 @@ namespace TreeLoader
         private readonly string apiUsername = ConfigurationManager.AppSettings["ApiUsername"];
         private readonly string apiPassword = ConfigurationManager.AppSettings["ApiPassword"];
 
+
         public void Load()
         {
+            for (char c = 'a'; c <= 'z'; c++)
+            {
+                Load(c);
+            }
+        }
+
+        private void Load(char a)
+        {
+            Console.WriteLine("ROZPOCZĘTO CZYTANIE DRZEW ZAWIERAJACYCH " + a);
+
             string json;
             using (WebClient webClient = new WebClient())
             {
-                json = webClient.DownloadString(apiUri).Replace(@"\ufeff", "");
+                json = webClient.DownloadString(apiUri + "&q=" + a).Replace(@"\ufeff", "");
             }
             DeserializedObject result = (DeserializedObject)JsonConvert.DeserializeObject(json, typeof(DeserializedObject));
             var trees = result.result.records;
@@ -35,9 +46,14 @@ namespace TreeLoader
                 foreach (var tree in trees)
                 {
                     InsertTree(tree, ctx, ref i);
+                    if (i % 500 == 0)
+                    {
+                        ctx.SaveChanges();
+                    }
                 }
                 ctx.SaveChanges();
             }
+            Console.WriteLine("ZAKOŃCZONO CZYTANIE DRZEW ZAWIERAJACYCH " + a);
         }
 
         private void InsertTree(Tree tree, ApplicationDbContext ctx, ref int i)
